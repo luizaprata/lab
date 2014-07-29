@@ -13,10 +13,35 @@ class Main extends EventDispatcher
 		$("input[name='btn1']").click(@btn1Click)
 		$("input[name='btn2']").click(@btn2Click)
 		$("input[name='btn3']").click(@btn3Click)
+		$("input[name='btn4']").click(@btn4Click)
+		$("input[name='btn5']").click(@btn5Click)
+		$("input[name='btn6']").click(@btn6Click)
 		return false
 			
 	onLoadText:(data)=>
 		@oldDukePhrases = data.split("\n")
+	
+	# MODES ###########################################
+	# Standard: 		/re/
+	# GLOBAL: 			/re/g
+	# Case-insensitive:	/re/i
+	# Multiline:		/re/m
+	# Dot-matches-all:	/re/s 
+	# 
+	# MODES it's a modifier for the way that this 
+	# regular expression ought to be handled. 
+	###################################################
+
+	# METACHARACTERS ###########################################
+	# Characters with special meaning
+	# -  Like mathematical operators
+	# -  Transform literal characteres into powerful expressions
+	# Metacharacters:
+	# -  \ . * + - {} [] ^ $ | ? () : ! =
+	# Can have more than one meaning
+	# -  Depends on how it is used in context
+	# Variations between regex engines
+	############################################################
 
 	# 1 - Literal Characters ############################
 	# BASIC SEARCH - /abc/
@@ -76,46 +101,45 @@ class Main extends EventDispatcher
 	#    0xA9 = \xA9
 	###################################################
 
-	# Defining a character set ##########################
-	# 
-	# 
-	# 
-	# 
-	# 
-	# 
-	# 
+	# 4 Defining a character set ##########################
+	#  [  » Begin a character set
+	#  ]  » End a character set
+	# Any one of several characters
+	#   But only one character
+	#   Order of characters does not matter
+	# Examples
+	# /[aeiou]/ matches any one vowel
+	# /gr[ea]y/ matches "grey" and "gray"
+	# /gr[ea]t/ does not match "great" = has to either be an e or an a = just one character of what is inside []
+	btn4Click:(e)=>
+		txt = '/w[aeiou]/gi' + '<br/>'
+		for phrase,i in @oldDukePhrases
+			txt += phrase.replace(new RegExp('(w[aeiou])', 'gi'),'<b>$1</b>') + '<br/>'
+		@addText(txt)
 
+	# 5 Character Ranges ##########################
+	#  -  » range of characters
+	# Represents all characters between two charactes
+	# Only a metacharacter inside a character set, a literal dash otherwise
+	# Examples
+	#   [0-9]
+	#   [a-zA-Z]
+	#   [a-ek-ou-y]
+	#   Caution 
+	#      [52-99] is NOT all numbers from 52 to 99, it is the same as [2-9]
+	btn5Click:(e)=>
+		txt = '/[0-9][0-9][0-9].[0-9][0-9][0-9].[0-9][0-9][0-9]-[0-9][0-9]/g' + '<br/>'
+		for phrase,i in @oldDukePhrases
+			txt += phrase.replace(new RegExp('([0-9][0-9][0-9].[0-9][0-9][0-9].[0-9][0-9][0-9]-[0-9][0-9])', 'g'),'<b>$1</b>') + '<br/>'
+		@addText(txt)
 	
+
+
+
+	#code#######################
 	addText:(newText)->
-		@output.empty()
-		@output.append(newText)
-
-
-
-
-	# MODES ###########################################
-	# Standard: 		/re/
-	# GLOBAL: 			/re/g
-	# Case-insensitive:	/re/i
-	# Multiline:		/re/m
-	# Dot-matches-all:	/re/s 
-	# 
-	# MODES it's a modifier for the way that this 
-	# regular expression ought to be handled. 
-	###################################################
-
-	# METACHARACTERS ###########################################
-	# Characters with special meaning
-	# -  Like mathematical operators
-	# -  Transform literal characteres into powerful expressions
-	# Metacharacters:
-	# -  \ . * + - {} [] ^ $ | ? () : ! =
-	# Can have more than one meaning
-	# -  Depends on how it is used in context
-	# Variations between regex engines
-	############################################################
-
-
+			@output.empty()
+			@output.append(newText)
 
 init = ()->
 	main = new Main()

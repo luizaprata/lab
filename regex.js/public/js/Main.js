@@ -153,6 +153,8 @@
     __extends(Main, _super);
 
     function Main() {
+      this.btn5Click = __bind(this.btn5Click, this);
+      this.btn4Click = __bind(this.btn4Click, this);
       this.btn3Click = __bind(this.btn3Click, this);
       this.btn2Click = __bind(this.btn2Click, this);
       this.btn1Click = __bind(this.btn1Click, this);
@@ -165,6 +167,9 @@
       $("input[name='btn1']").click(this.btn1Click);
       $("input[name='btn2']").click(this.btn2Click);
       $("input[name='btn3']").click(this.btn3Click);
+      $("input[name='btn4']").click(this.btn4Click);
+      $("input[name='btn5']").click(this.btn5Click);
+      $("input[name='btn6']").click(this.btn6Click);
       return false;
     }
 
@@ -208,6 +213,28 @@
       for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
         phrase = _ref[i];
         txt += phrase.replace(new RegExp('(.\\.)', 'gi'), '<b>$1</b>') + '<br/>';
+      }
+      return this.addText(txt);
+    };
+
+    Main.prototype.btn4Click = function(e) {
+      var i, phrase, txt, _i, _len, _ref;
+      txt = '/w[aeiou]/gi' + '<br/>';
+      _ref = this.oldDukePhrases;
+      for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
+        phrase = _ref[i];
+        txt += phrase.replace(new RegExp('(w[aeiou])', 'gi'), '<b>$1</b>') + '<br/>';
+      }
+      return this.addText(txt);
+    };
+
+    Main.prototype.btn5Click = function(e) {
+      var i, phrase, txt, _i, _len, _ref;
+      txt = '/[0-9][0-9][0-9].[0-9][0-9][0-9].[0-9][0-9][0-9]-[0-9][0-9]/g' + '<br/>';
+      _ref = this.oldDukePhrases;
+      for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
+        phrase = _ref[i];
+        txt += phrase.replace(new RegExp('([0-9][0-9][0-9].[0-9][0-9][0-9].[0-9][0-9][0-9]-[0-9][0-9])', 'g'), '<b>$1</b>') + '<br/>';
       }
       return this.addText(txt);
     };

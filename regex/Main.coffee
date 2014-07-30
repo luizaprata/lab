@@ -133,6 +133,78 @@ class Main extends EventDispatcher
 			txt += phrase.replace(new RegExp('([0-9][0-9][0-9].[0-9][0-9][0-9].[0-9][0-9][0-9]-[0-9][0-9])', 'g'),'<b>$1</b>') + '<br/>'
 		@addText(txt)
 	
+	# 6 Negative Character Sets ##################
+	#  ^  » negate a character set
+	# Not any one of several character set
+	#   Add ^ as the first character inside a character set
+	#   Still represents one character
+	# Examples
+	#   /[^aeiou]/ matches any one consonant (non-vowel)
+	#   /see[^mn]/ matches "seek" and "sees" but not "seem" or "seen"
+	# Caution
+	#	/see[^mn]/ maatches "see " but not "see"
+	btn6Click:(e)=>
+		txt = '/([^a-zA-Z]/g' + '<br/>'
+		for phrase,i in @oldDukePhrases
+			txt += phrase.replace(new RegExp('([^a-zA-Z])', 'g'),'<b>$1</b>') + '<br/>'
+		@addText(txt)
+
+
+	# Metacharacters inside character sets
+	# Metacharacters inside character sets are already escaped
+	#   Do not need to escape them again
+	#   /h[abc.xyz]t/ matches "hat" and "h.t", but not "hot"(dot is inside the character sets, so it is a literal dot but not a wildcard)
+	# Exceptions:
+	#   ] - ^ \  » DO need to escape them
+	# Examples:
+	#   /file[0\-\\_]1/g matches "file01", "file-1", "file\1", "file_1" 
+	#   /var[[(][0-9][)\]]/g matches "var(3)", "var[4]"
+	
+
+	# Shorthand characters sets
+	# \d  » digits  			» [0-9]
+	# \w  » word character  	» [a-zA-Z0-9_]
+	# \s  » whitespace  		» [ \t\r\n]
+	# \D  » Not digit  			» [^0-9]
+	# \W  » Not word character 	» [^a-zA-Z0-9_]
+	# \S  » Not whitespace 		» [^ \t\r\n]
+	# Caution
+	#   \w
+	#     Underscore is a word character
+	#     Hyphen is not a word character, it is considered a ponctuation
+	# Examples
+	# /\d\d\d\d/ matches "1984" but not "text"
+	# /\w\w\w/ matches "ABC", "123", and "1_A"
+	# /\w\s\w\w/ matches "I am", but not "Am I"
+	# /[\w\-]/ matches as word character or hyphen (useful)
+	# /[\d\s]/ matches any digit or whitespace character
+	# /[^\d]/ is the same as /\D/ and /[^0-9]/
+	# Caution
+	#    /[^\d\s]/ is not the same as [\D\S] 
+	#		/[^\d\s]/ » its is saying NOT digit OR space character
+	#		/[\D\S]/ » EITHER NOT digit OR NOT space charactera
+	#           1234 456 789 all match with [\D\S] because "1" its not a space and " " its not a number » if (number OR space)
+	# Shorthand its originated with perl, all moder regex engines supports it but not in many unix tools
+	
+	# POSIX Bracket Expressions
+	# [:alpha:]		» Alphabetic Characters 			» A-Za-z
+	# [:digit:]		» Numeric Characters 				» 0-9
+	# [:alnum:]		» Alphanumeric character 			» A-Za-z0-9
+	# [:lower:]		» Lowercase alphabetic character 	» a-z
+	# [:upper:]		» Uppercase alphabetic character 	» A-Z
+	# [:pundt:]		» Punctuation characters 			»
+	# [:space:]		» Space characters 					» \s
+	# [:blank:]		» Blank characters (space, tab)		»
+	# [:print:]		» Printable characters, no spaces
+	# [:cntrl:]		» control characters(non-printable)	»
+	# [:xdigit:]	» Hexadecimal characteres 			» A-Fa-f0-9  
+	# Use inside a character class, not standalone
+	#   Corre
+	# 
+	# 
+	# 
+	# 
+	# 
 
 
 

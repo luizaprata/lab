@@ -1,0 +1,19 @@
+<h1 style="line-height:32px; margin-bottom:35px;"><b>Bem-vindo ao Mapa<br/>VAGAS de Carreiras</b></h1>
+
+<hr style="margin-bottom: 20px;">
+	<ul style="margin-bottom: 30px;">
+		<li>
+			<img style="width:50px; height:50px; float:left; margin-bottom:20px;" src="/media/image/internal/about/icon1.png"/>
+			<h3 style="padding-left:80px; padding-right:60px; line-height:16px;">Candidatos de todo o país cadastram seus CVs através do <a href="http://www.vagas.com.br/" target="_blank">VAGAS.com</a></h3>
+		</li>
+		<li>
+			<img style="width:50px; height:85px; float:left; margin-bottom:17px;" src="/media/image/internal/about/icon2.png"/>
+			<h3 style="padding-left:80px; padding-right:60px; line-height:16px; padding-top:16px;">As informações vão para o banco de dados, onde recebem tratamento</h3>
+		</li>
+		<li>
+			<img style="width:50px; height:55px; float:left;" src="/media/image/internal/about/icon3.png"/>
+			<h3 style="padding-left:80px; padding-right:60px; line-height:16px;">E são disponibilizadas gratuitamente no Mapa VAGAS de Carreiras</h3>
+		</li>
+	</ul>
+<hr style="margin-top: 20px; margin-bottom: 37px;">
+<p>O Mapa VAGAS de Carreiras é um site gratuito, desenvolvido a partir de dados de oito milhões de currículos do site <a href="http://www.vagas.com.br/" target="_blank">VAGAS.com.br</a>. Com ele, você poderá navegar em mais de seis mil cargos, conhecer suas conexões mais recorrentes, faixas salariais e vagas abertas. Tudo isso com total segurança de dados individuais.<br/><br/>Todos os dados apresentados no mapa - nome dos cargos, salários, formação - foram informados pelos usuários do <a href="http://www.vagas.com.br/" target="_blank">VAGAS.com.br</a>. Eles passaram por um processo de “limpeza” e foram organizados para dar informações com o máximo de precisão e eficiência.<br/><br/>O mapa é seu: uma forma da VAGAS retribuir a sua confiança com mais um serviço totalmente gratuito para ajudar na orientação de sua carreira.<br/><br/>Explore, confira seu cargo, participe com sugestões!<br/><br/>Boa navegação!<br/><br/><br/><br/></p>

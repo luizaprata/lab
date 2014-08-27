@@ -13,11 +13,19 @@ class Main extends EventDispatcher
 			success : @onLoadHtml
 		})
 
+		$.ajax({
+			url : "USPresident.csv",
+			success : @onLoadCSV
+		})
+
+		$.ajax({
+			url : "nameslist.txt",
+			success : @onLoadNames
+		})
+
 		@output = $('.output')
 
 		@layout = $('.layout')
-
-		
 
 		for item,i in indice
 			if (item != "")
@@ -311,6 +319,11 @@ class Main extends EventDispatcher
 				#     /(abc)+/ matches "abc" and "abcabcabc"
 				#     /(in)?dependent/ matches "independent" and "dependent"
 				#     /runs(s)?/ is the same as /runs?/
+				# Caution
+				#     /(A?)B/ matches "B" and captures ""
+				#        Element is optional, group/capture is not optional
+				#     /(A)?B/ matches "B" and does not capture anything
+				#        Element is not optional, group/capture is optional
 				txt = '/\\b(the)\\w/gi' + '<br/>'
 				re = /(\b(the)\w)/ig
 				txt += @oldDuke.replace(re, "<b>$1</b>")
@@ -413,9 +426,123 @@ class Main extends EventDispatcher
 					txt += node
 				@addText(txt)
 
-				console.log @html.length,txt.length
+			when 18
+				# organize text
+				re = /\s*,\s*/g
+				txt = @usPresident.replace(re, ',')
+				# change title
+				re = /^.+$/m
+				txt = txt.replace(re, 'Number,Last Name,First Name,Took office,Left office,Party,Home State')
+				# remove links
+				re = /http:\/\/[^,]+,?/g
+				txt = txt.replace(re, '')
+				# remove images
+				re = /\w+\.(gif|jpg|png),?/g
+				txt = txt.replace(re, '')
+				# remove comments
+				re = /\(.+\)/g
+				txt = txt.replace(re, '')
+				# change name order
+				re = /^(\d{1,}),([\w .]+) ([\w]+),/gm
+				txt = txt.replace(re, "$1,$3,$2,")
+				# removedays months
+				re = /\d{1,2}\//g
+				txt = txt.replace(re, '')
+				@addText(txt)
+				#change title
+				re = /^.+/
 
-				
+			when 19
+				# 19 NON-CAPTURING GROUP EXPRESSIONS
+				#  ?:   » Specify a non-caturing group
+				# Syntax
+				#    /(\w+)/ becomes /(?:\w+)/
+				# Turns off captures ($1 to $9) and backreferences (\1 to \9)
+				#    Optimize for speed
+				#    Preserve space for more captures
+				# /(?:regex)/
+				#   ? = "Give this group a different meaning"
+				#   : = "The meaning is non-capturing"
+				txt = '(?:up)([\\w ])+\\1'  + '<br/>'
+				re = /((?:up)([\w ])+\2)/g
+				txt += @oldDuke.replace(re, "<b>$1</b>")
+				@addText(txt)
+
+			when 20
+				# 20 POSITIVE LOOKAHEAD ASSERTIONS
+				#  ?=   » Positive lookahead assertions
+				#  Zero-width - Does not include group in the match
+				# Examples
+				#   /(?=seashore)sea/ or /sea(?=shore)/ matches "sea" in  "seashore" but not "seaside"
+				# 	^(?=.*\d)(?=.*[A-Z]).{8,15}$ 
+				#      Verifica um password, precisa ter numero, letra maiuscula e tambem ter entre 8 a 15 caracteres 
+				txt = '\\b[A-Za-z\'\\-]+\\b(?=\\.)\\g'  + '<br/>'
+				re = /(\b[A-Za-z'\-]+\b(?=\.))/g
+				txt += @oldDuke.replace(re, "<b>$1</b>")
+				@addText(txt)
+			
+			when 21
+				# 21 NEGATIVE LOOKAHEAD ASSERTIONS
+				#  ?!   » Negative lookahead assertions
+				#  Zero-width - Does not include group in the match
+				# Examples
+				#   /(?!seashore)sea/ or sea(?!shore) matches "sea" in  "seaside" but not "seashore"
+				# 	/online(?! training)/ does not match "online training" but would match "online courses" 
+				# 	/online(?!.*training)/ does not match "online video training" 
+				#   /(\bblack\b)(?!.*\1)/ returns the last occurrence of "black" in the text
+				txt = '\\bdown\\b(?!\\.)'  + '<br/>'
+				re = /(\bdown\b(?!\.))/gi
+				txt += @oldDuke.replace(re, "<b>$1</b>")
+				@addText(txt)
+
+			when 22
+				# 22 UNICODE
+				#  \u   » Unicode indicator followed by a four-digit hexadecimal number (0000-FFFFF that’s over 1.1 million possible symbols. )
+				# Examples
+				#    /caf\u00E9/ matches "café" but not "cafe"
+				#    or /caf\u0065\u0301/ matches "café" but not "cafe"
+				#    But its can result many issues because there are differentes types of encoding (UTF-8	or UTF-16)
+				#    Basic Latin : Block from U+0000 to U+007F
+				#    http://en.wikipedia.org/wiki/Plane_(Unicode)
+				#    [\u0020\u0027\u002C\u002D\u0030-\u0039\u0041-\u005A\u005F\u0061-\u007A\u00A0-\u00FF./]
+				#     \u0020 : SPACE
+				#     \u0027 : APOSTROPHE
+				#     \u002C : COMMA
+				#     \u002D : HYPHEN / MINUS
+				#     \u0030-\u0039\ : 0-9
+				#     \u0041-\u005A : A - Z
+				#     \u005F : UNDERSCORE
+				#     \u0061-\u007A\ : a - z
+				#     \u00C0-\u00FF : "À to ÿ"
+				#     \u00A0-\u00FF : like above plus ©, ª, etc
+				txt = '[\\u00C0-\\u00FF]\\g'  + '<br/>'
+				re = /([\u00C0-\u00FF])/g
+				txt += @oldDuke.replace(re, "<b>$1</b>")
+				@addText(txt)
+
+			when 23
+				# check names : ^([A-Za-z\u00C0-\u00FF]+)( [A-Za-z\u00C0-\u00FF.']+)+$
+				# Fist letter uppercase
+				txt = ''
+				re = /(^(?:[A-Za-z\u00C0-\u00FF-']+)(?: [A-Za-z\u00C0-\u00FF'-.]+)+$)/gm
+				txt += @names.replace(re, @firtsUpperLetterCase)
+				@addText(txt)
+
+	firtsUpperLetterCase:(text)->
+		text = text.toLowerCase()
+		re = /(^[a-z\u00E0-\u00FC]| [a-z\u00E0-\u00FC])/gm
+		text = text.replace(re, (firstLetter)->
+			return firstLetter.toUpperCase()
+		)
+		# text = text.replace(/(\bDe\b)/g, 'de')
+		# text = text.replace(/(\bDa\b)/g, 'da')
+		# text = text.replace(/(\bDo\b)/g, 'do')
+		text = text.replace(/('[a-z\u00C0-\u00FF]|-[a-z\u00C0-\u00FF])/g, (especial)->
+			return especial.toUpperCase()
+		)
+
+		return text
+
 
 
 	indice = [
@@ -436,7 +563,13 @@ class Main extends EventDispatcher
 		"^ and $" 	#14
 		"\\b\\B" 	#15
 		"\\1" 		#16
-		"html"	#17
+		"html"	    #17
+		"csv"	    #18
+		"?:"	    #19
+		"?="	    #20
+		"?!"	    #21
+		"unicode"   #22
+		"names"     #23
 	]
 
 	#code#######################
@@ -447,11 +580,19 @@ class Main extends EventDispatcher
 	onLoadText:(data)=>
 		@oldDuke = data
 
+	onLoadNames:(data)=>
+		@names = data
+
+	onLoadCSV:(data)=>
+		@usPresident = data
+
 	addText:(newText)->
 		re = /(\n)/g
 		txt = newText.replace(re, "$1<br/>")
 		@output.empty()
 		@output.append(txt)
+
+
 
 init = ()->
 	main = new Main()

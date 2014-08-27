@@ -155,6 +155,8 @@
     __extends(Main, _super);
 
     function Main() {
+      this.onLoadCSV = __bind(this.onLoadCSV, this);
+      this.onLoadNames = __bind(this.onLoadNames, this);
       this.onLoadText = __bind(this.onLoadText, this);
       this.onLoadHtml = __bind(this.onLoadHtml, this);
       this.clickItemButton = __bind(this.clickItemButton, this);
@@ -166,6 +168,14 @@
       $.ajax({
         url: "html.txt",
         success: this.onLoadHtml
+      });
+      $.ajax({
+        url: "USPresident.csv",
+        success: this.onLoadCSV
+      });
+      $.ajax({
+        url: "nameslist.txt",
+        success: this.onLoadNames
       });
       this.output = $('.output');
       this.layout = $('.layout');
@@ -281,12 +291,66 @@
             node = arr[_j];
             txt += node;
           }
+          return this.addText(txt);
+        case 18:
+          re = /\s*,\s*/g;
+          txt = this.usPresident.replace(re, ',');
+          re = /^.+$/m;
+          txt = txt.replace(re, 'Number,Last Name,First Name,Took office,Left office,Party,Home State');
+          re = /http:\/\/[^,]+,?/g;
+          txt = txt.replace(re, '');
+          re = /\w+\.(gif|jpg|png),?/g;
+          txt = txt.replace(re, '');
+          re = /\(.+\)/g;
+          txt = txt.replace(re, '');
+          re = /^(\d{1,}),([\w .]+) ([\w]+),/gm;
+          txt = txt.replace(re, "$1,$3,$2,");
+          re = /\d{1,2}\//g;
+          txt = txt.replace(re, '');
           this.addText(txt);
-          return console.log(this.html.length, txt.length);
+          return re = /^.+/;
+        case 19:
+          txt = '(?:up)([\\w ])+\\1' + '<br/>';
+          re = /((?:up)([\w ])+\2)/g;
+          txt += this.oldDuke.replace(re, "<b>$1</b>");
+          return this.addText(txt);
+        case 20:
+          txt = '\\b[A-Za-z\'\\-]+\\b(?=\\.)\\g' + '<br/>';
+          re = /(\b[A-Za-z'\-]+\b(?=\.))/g;
+          txt += this.oldDuke.replace(re, "<b>$1</b>");
+          return this.addText(txt);
+        case 21:
+          txt = '\\bdown\\b(?!\\.)' + '<br/>';
+          re = /(\bdown\b(?!\.))/gi;
+          txt += this.oldDuke.replace(re, "<b>$1</b>");
+          return this.addText(txt);
+        case 22:
+          txt = '[\\u00C0-\\u00FF]\\g' + '<br/>';
+          re = /([\u00C0-\u00FF])/g;
+          txt += this.oldDuke.replace(re, "<b>$1</b>");
+          return this.addText(txt);
+        case 23:
+          txt = '';
+          re = /(^(?:[A-Za-z\u00C0-\u00FF-']+)(?: [A-Za-z\u00C0-\u00FF'-.]+)+$)/gm;
+          txt += this.names.replace(re, this.firtsUpperLetterCase);
+          return this.addText(txt);
       }
     };
 
-    indice = ["", "literal", ".", "\\", "[]", "-", "^", "*", "+", "?", "{}", "lazy", "()", "|", "^ and $", "\\b\\B", "\\1", "html"];
+    Main.prototype.firtsUpperLetterCase = function(text) {
+      var re;
+      text = text.toLowerCase();
+      re = /(^[a-z\u00E0-\u00FC]| [a-z\u00E0-\u00FC])/gm;
+      text = text.replace(re, function(firstLetter) {
+        return firstLetter.toUpperCase();
+      });
+      text = text.replace(/('[a-z\u00C0-\u00FF]|-[a-z\u00C0-\u00FF])/g, function(especial) {
+        return especial.toUpperCase();
+      });
+      return text;
+    };
+
+    indice = ["", "literal", ".", "\\", "[]", "-", "^", "*", "+", "?", "{}", "lazy", "()", "|", "^ and $", "\\b\\B", "\\1", "html", "csv", "?:", "?=", "?!", "unicode", "names"];
 
     Main.prototype.onLoadHtml = function(data) {
       return this.html = data;
@@ -294,6 +358,14 @@
 
     Main.prototype.onLoadText = function(data) {
       return this.oldDuke = data;
+    };
+
+    Main.prototype.onLoadNames = function(data) {
+      return this.names = data;
+    };
+
+    Main.prototype.onLoadCSV = function(data) {
+      return this.usPresident = data;
     };
 
     Main.prototype.addText = function(newText) {

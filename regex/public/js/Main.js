@@ -334,8 +334,25 @@
           re = /(^(?:[A-Za-z\u00C0-\u00FF-']+)(?: [A-Za-z\u00C0-\u00FF'-.]+)+$)/gm;
           txt += this.names.replace(re, this.firtsUpperLetterCase);
           return this.addText(txt);
+        case 24:
+          txt = '';
+          re = /(^\d{5}-?\d{3}$)/gm;
+          txt += this.oldDuke.replace(re, this.firtsUpperLetterCase);
+          return this.addText(txt);
+        case 25:
+          txt = '';
+          re = /(^[\w.%+\-]+@[\w.\-]+\.[A-Za-z]{2,6}$)/gm;
+          txt += this.oldDuke.replace(re, this.firtsUpperLetterCase);
+          return this.addText(txt);
+        case 26:
+          txt = '';
+          re = /(^https?:\/\/(?:[a-z\d]+\.?)+([A-Za-z\d\/\-,@+.!?=:#&%]+?)?$)/gm;
+          txt += this.oldDuke.replace(re, this.firtsUpperLetterCase);
+          return this.addText(txt);
       }
     };
+
+    indice = ["", "literal", ".", "\\", "[]", "-", "^", "*", "+", "?", "{}", "lazy", "()", "|", "^ and $", "\\b\\B", "\\1", "html", "csv", "?:", "?=", "?!", "unicode", "names", "cep", "email", "url"];
 
     Main.prototype.firtsUpperLetterCase = function(text) {
       var re;
@@ -349,8 +366,6 @@
       });
       return text;
     };
-
-    indice = ["", "literal", ".", "\\", "[]", "-", "^", "*", "+", "?", "{}", "lazy", "()", "|", "^ and $", "\\b\\B", "\\1", "html", "csv", "?:", "?=", "?!", "unicode", "names"];
 
     Main.prototype.onLoadHtml = function(data) {
       return this.html = data;

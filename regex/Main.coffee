@@ -528,22 +528,36 @@ class Main extends EventDispatcher
 				txt += @names.replace(re, @firtsUpperLetterCase)
 				@addText(txt)
 
-	firtsUpperLetterCase:(text)->
-		text = text.toLowerCase()
-		re = /(^[a-z\u00E0-\u00FC]| [a-z\u00E0-\u00FC])/gm
-		text = text.replace(re, (firstLetter)->
-			return firstLetter.toUpperCase()
-		)
-		# text = text.replace(/(\bDe\b)/g, 'de')
-		# text = text.replace(/(\bDa\b)/g, 'da')
-		# text = text.replace(/(\bDo\b)/g, 'do')
-		text = text.replace(/('[a-z\u00C0-\u00FF]|-[a-z\u00C0-\u00FF])/g, (especial)->
-			return especial.toUpperCase()
-		)
-
-		return text
-
-
+			when 24
+				#zip code
+				txt = ''
+				re = /(^\d{5}-?\d{3}$)/gm
+				txt += @oldDuke.replace(re, @firtsUpperLetterCase)
+				@addText(txt)
+			when 25
+				#email
+				txt = ''
+				re = /(^[\w.%+\-]+@[\w.\-]+\.[A-Za-z]{2,6}$)/gm
+				txt += @oldDuke.replace(re, @firtsUpperLetterCase)
+				@addText(txt)
+			when 26
+				#url
+				# http://www.example.com
+				# http://example.com
+				# http://blog.example.com
+				# https://www.example.com
+				# http://www.example.com/page.html
+				# http://www.example.com/img/image.gif
+				# http://www.example.com/page/
+				# http://www.example.com/page/123
+				# http://www.example.com/page.php?product=28
+				# http://www.example.com?product=25&color=blue
+				# http://www.example.com#details
+				# ^https?:\/\/(?:[a-z\d]+\.?)+([A-Za-z\d\/\-,@+.!?=:#&%]+?)?$
+				txt = ''
+				re = /(^https?:\/\/(?:[a-z\d]+\.?)+([A-Za-z\d\/\-,@+.!?=:#&%]+?)?$)/gm
+				txt += @oldDuke.replace(re, @firtsUpperLetterCase)
+				@addText(txt)
 
 	indice = [
 		""
@@ -570,9 +584,26 @@ class Main extends EventDispatcher
 		"?!"	    #21
 		"unicode"   #22
 		"names"     #23
+		"cep"       #24
+		"email"     #25
+		"url"       #26
 	]
 
 	#code#######################
+	firtsUpperLetterCase:(text)->
+		text = text.toLowerCase()
+		re = /(^[a-z\u00E0-\u00FC]| [a-z\u00E0-\u00FC])/gm
+		text = text.replace(re, (firstLetter)->
+			return firstLetter.toUpperCase()
+		)
+		# text = text.replace(/(\bDe\b)/g, 'de')
+		# text = text.replace(/(\bDa\b)/g, 'da')
+		# text = text.replace(/(\bDo\b)/g, 'do')
+		text = text.replace(/('[a-z\u00C0-\u00FF]|-[a-z\u00C0-\u00FF])/g, (especial)->
+			return especial.toUpperCase()
+		)
+
+		return text
 
 	onLoadHtml:(data)=>
 		@html = data

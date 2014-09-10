@@ -23,8 +23,17 @@ class Main extends EventDispatcher
 			success : @onLoadNames
 		})
 
-		@output = $('.output')
+		$.ajax({
+			url : "mapa.json",
+			success : @onMapa
+		})
 
+		$.ajax({
+			url : "teste3.txt",
+			success : @onlucas
+		})
+
+		@output = $('.output')
 		@layout = $('.layout')
 
 		for item,i in indice
@@ -553,11 +562,86 @@ class Main extends EventDispatcher
 				# http://www.example.com/page.php?product=28
 				# http://www.example.com?product=25&color=blue
 				# http://www.example.com#details
-				# ^https?:\/\/(?:[a-z\d]+\.?)+([A-Za-z\d\/\-,@+.!?=:#&%]+?)?$
 				txt = ''
 				re = /(^https?:\/\/(?:[a-z\d]+\.?)+([A-Za-z\d\/\-,@+.!?=:#&%]+?)?$)/gm
-				txt += @oldDuke.replace(re, @firtsUpperLetterCase)
+				txt += @oldDuke.replace(re, "<b>$1</b>")
 				@addText(txt)
+			when 27
+				#find numbers
+				# 5.1
+				# 341.4548453
+				# 0,3
+				# .34564768
+				# 12
+				txt = ''
+				re = /(\b\d*\.?\d+?\b)/gm
+				txt += @map.replace(re, "<b>$1</b>")
+
+				@addText(txt)
+			when 28
+				# ip addresses
+				#   250-255 : /25[0-5]/
+				#   200-249 : /2[0-4][0-9]/
+				#   000-199 : /[01]?[0-9][0-9]?/
+				txt = ''
+				re = /((?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))/gm
+				txt += @oldDuke.replace(re, "<b>$1</b>")
+				@addText(txt)
+			when 29
+				txt = ''
+				# validate date
+				# \b(?:3[01]|2[0-9]|[01]?[1-9])[\/\-](?:[01][0-2]|0[0-9]|[1-9])[\/\-](?:19[0-9][0-9]|20[0-9][0-9])
+				# \b(?:3[01]|2[0-9]|[01]?[1-9])[\/\-](?:1[0-2]|0?[1-9])[\/\-](?:(?:19|20)[0-9]{2})
+				re = /(\b(?:3[01]|2[0-9]|[01]?[1-9])[\/\-](?:1[0-2]|0?[1-9])[\/\-](?:(?:19|20)[0-9]{2}))/g
+				txt += @oldDuke.replace(re, "<b>$1</b>")
+				@addText(txt)
+			when 30
+				txt = ''
+				# validate passwords
+				# may contain any character except space
+				# at least 7 chars long
+				# no more than 15 chars long
+				# must include at least one uppercase letter
+				# must include at least one lowercase letter
+				# must include at least one numeric digit
+				# must include at least one symbol
+				re = /(^(?=.*[0-9])(?=.*[@%$])(?=.*[A-Z])(?=.*[a-z])[^\s]{8,15}$)/gm
+				txt += @oldDuke.replace(re, "<b>$1</b>")
+				@addText(txt)
+			when 31
+				txt = ''
+				# valid credit card
+				re = /(\d{4}([ \-]?)\d{4}\2\d{4}\2\d{4}|\d{4}([ \-]?)\d{6}([ \-]?)\3\d{5})/gm
+				txt += @oldDuke.replace(re, "<b>$1</b>")
+				@addText(txt)
+			when 32
+				txt = ''
+				re = /(^.+$)/gm
+				arr = @lucas.match(re)
+				@teste = null
+				@teste2 = null
+
+				for node,i in arr
+					if (@teste)
+						t2 = node.match(/(&.+\b)/g)
+						if (t2 and t2.length>0)
+							@teste2 = t2[0]
+					t1 = node.match(/^(?:\d+[A-Z]*){2,8}/g) 
+					if (t1 and t1.length>0)
+						@teste = t1[0]
+					
+					if (@teste and @teste2)
+						txt+= @teste+","+@teste2+"\n"
+						@teste = null
+						@teste2 = null
+
+				@addText(txt)
+
+
+	lista_gm:(text)->
+		str2 = text.replace(/(&.+$)/gm, "$1\n")
+		return text+str2+"\n\n\n"
+				
 
 	indice = [
 		""
@@ -587,6 +671,12 @@ class Main extends EventDispatcher
 		"cep"       #24
 		"email"     #25
 		"url"       #26
+		"numbers"   #27
+		"ip"        #28
+		"dd/mm/aaaa"#29
+		"password"  #30
+		"creditcard"#31
+		"lucas"
 	]
 
 	#code#######################
@@ -605,6 +695,9 @@ class Main extends EventDispatcher
 
 		return text
 
+	onlucas:(data)=>
+		@lucas = data
+
 	onLoadHtml:(data)=>
 		@html = data
 
@@ -616,6 +709,9 @@ class Main extends EventDispatcher
 
 	onLoadCSV:(data)=>
 		@usPresident = data
+
+	onMapa:(data)=>
+		@map = JSON.stringify(data)
 
 	addText:(newText)->
 		re = /(\n)/g

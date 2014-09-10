@@ -155,10 +155,12 @@
     __extends(Main, _super);
 
     function Main() {
+      this.onMapa = __bind(this.onMapa, this);
       this.onLoadCSV = __bind(this.onLoadCSV, this);
       this.onLoadNames = __bind(this.onLoadNames, this);
       this.onLoadText = __bind(this.onLoadText, this);
       this.onLoadHtml = __bind(this.onLoadHtml, this);
+      this.onlucas = __bind(this.onlucas, this);
       this.clickItemButton = __bind(this.clickItemButton, this);
       var i, inputButton, item, _i, _len;
       $.ajax({
@@ -177,6 +179,14 @@
         url: "nameslist.txt",
         success: this.onLoadNames
       });
+      $.ajax({
+        url: "mapa.json",
+        success: this.onMapa
+      });
+      $.ajax({
+        url: "teste3.txt",
+        success: this.onlucas
+      });
       this.output = $('.output');
       this.layout = $('.layout');
       for (i = _i = 0, _len = indice.length; _i < _len; i = ++_i) {
@@ -191,7 +201,7 @@
     }
 
     Main.prototype.clickItemButton = function(e) {
-      var arr, node, oldDukePhrases, phrase, re, searchDown, searchUP, txt, _i, _j, _len, _len1;
+      var arr, i, node, oldDukePhrases, phrase, re, searchDown, searchUP, t1, t2, txt, _i, _j, _k, _len, _len1, _len2;
       switch (parseInt(e.target.name)) {
         case 1:
           txt = '';
@@ -347,12 +357,68 @@
         case 26:
           txt = '';
           re = /(^https?:\/\/(?:[a-z\d]+\.?)+([A-Za-z\d\/\-,@+.!?=:#&%]+?)?$)/gm;
-          txt += this.oldDuke.replace(re, this.firtsUpperLetterCase);
+          txt += this.oldDuke.replace(re, "<b>$1</b>");
+          return this.addText(txt);
+        case 27:
+          txt = '';
+          re = /(\b\d*\.?\d+?\b)/gm;
+          txt += this.map.replace(re, "<b>$1</b>");
+          return this.addText(txt);
+        case 28:
+          txt = '';
+          re = /((?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))/gm;
+          txt += this.oldDuke.replace(re, "<b>$1</b>");
+          return this.addText(txt);
+        case 29:
+          txt = '';
+          re = /(\b(?:3[01]|2[0-9]|[01]?[1-9])[\/\-](?:1[0-2]|0?[1-9])[\/\-](?:(?:19|20)[0-9]{2}))/g;
+          txt += this.oldDuke.replace(re, "<b>$1</b>");
+          return this.addText(txt);
+        case 30:
+          txt = '';
+          re = /(^(?=.*[0-9])(?=.*[@%$])(?=.*[A-Z])(?=.*[a-z])[^\s]{8,15}$)/gm;
+          txt += this.oldDuke.replace(re, "<b>$1</b>");
+          return this.addText(txt);
+        case 31:
+          txt = '';
+          re = /(\d{4}([ \-]?)\d{4}\2\d{4}\2\d{4}|\d{4}([ \-]?)\d{6}([ \-]?)\3\d{5})/gm;
+          txt += this.oldDuke.replace(re, "<b>$1</b>");
+          return this.addText(txt);
+        case 32:
+          txt = '';
+          re = /(^.+$)/gm;
+          arr = this.lucas.match(re);
+          this.teste = null;
+          this.teste2 = null;
+          for (i = _k = 0, _len2 = arr.length; _k < _len2; i = ++_k) {
+            node = arr[i];
+            if (this.teste) {
+              t2 = node.match(/(&.+\b)/g);
+              if (t2 && t2.length > 0) {
+                this.teste2 = t2[0];
+              }
+            }
+            t1 = node.match(/^(?:\d+[A-Z]*){2,8}/g);
+            if (t1 && t1.length > 0) {
+              this.teste = t1[0];
+            }
+            if (this.teste && this.teste2) {
+              txt += this.teste + "," + this.teste2 + "\n";
+              this.teste = null;
+              this.teste2 = null;
+            }
+          }
           return this.addText(txt);
       }
     };
 
-    indice = ["", "literal", ".", "\\", "[]", "-", "^", "*", "+", "?", "{}", "lazy", "()", "|", "^ and $", "\\b\\B", "\\1", "html", "csv", "?:", "?=", "?!", "unicode", "names", "cep", "email", "url"];
+    Main.prototype.lista_gm = function(text) {
+      var str2;
+      str2 = text.replace(/(&.+$)/gm, "$1\n");
+      return text + str2 + "\n\n\n";
+    };
+
+    indice = ["", "literal", ".", "\\", "[]", "-", "^", "*", "+", "?", "{}", "lazy", "()", "|", "^ and $", "\\b\\B", "\\1", "html", "csv", "?:", "?=", "?!", "unicode", "names", "cep", "email", "url", "numbers", "ip", "dd/mm/aaaa", "password", "creditcard", "lucas"];
 
     Main.prototype.firtsUpperLetterCase = function(text) {
       var re;
@@ -365,6 +431,10 @@
         return especial.toUpperCase();
       });
       return text;
+    };
+
+    Main.prototype.onlucas = function(data) {
+      return this.lucas = data;
     };
 
     Main.prototype.onLoadHtml = function(data) {
@@ -381,6 +451,10 @@
 
     Main.prototype.onLoadCSV = function(data) {
       return this.usPresident = data;
+    };
+
+    Main.prototype.onMapa = function(data) {
+      return this.map = JSON.stringify(data);
     };
 
     Main.prototype.addText = function(newText) {

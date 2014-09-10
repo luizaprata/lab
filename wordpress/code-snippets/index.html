@@ -1,0 +1,2916 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    <title>
+      Code Snippets for WordPress: Building Themes from Scratch with Underscores
+    </title>
+    <link rel="stylesheet" href="parts/style.css">
+    <link rel="stylesheet" href="parts/exercise-files.css">
+    <link href="parts/prism.css" rel="stylesheet" />
+    
+    
+</head>
+<body>
+<script src="parts/prism.js"></script>
+    <header class="masthead">
+        <div class="wrapper">
+            <h1>WordPress:<br> Building Themes from Scratch with Underscores</h1>    
+            <div class="sub">Code Snippets</div>
+        </div>
+    </header>
+    
+    <nav class="navigation">
+        <ul class="wrapper">
+            <li>
+                <a href="#chapter-03">Chapter 3: Setting Up the Basic Theme</a>
+                <ul>
+                    <li><a href="#movie-0303">3.3 - Enabling Custom Fonts and Font Icons</a></li>
+                    <li><a href="#movie-0304">3.4 - Applying Global Styles</a></li>
+                    <li><a href="#movie-0305">3.5 - Styling Basic Layout Components</a></li>
+                    <li><a href="#movie-0306">3.6 - Making the Site Layout Responsive</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#chapter-04">Chapter 4: Building the Header</a>
+                <ul>
+                    <li><a href="#movie-0401">4.1 - Styling the Default Header</a></li>
+                    <li><a href="#movie-0402">4.2 - Hiding the Site Title and Tagline</a></li>
+                    <li><a href="#movie-0403">4.3 - Adding an Optional Header Image Function</a></li>
+                    <li><a href="#movie-0404">4.4 - Placing the Header Image Behind the Site Title</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#chapter-05">Chapter 5: Working with Menus</a>
+                <ul>
+                    <li><a href="#movie-0502">5.2 - Styling the Menu</a></li>
+                    <li><a href="#movie-0503">5.3 - Using Superfish for Accessible Menus</a></li>
+                    <li><a href="#movie-0504">5.4 - Making the Menu Responsive</a></li>
+                    <li><a href="#movie-0505">5.5 - Creating a Custom Social Media Menu</a></li>
+                    <li><a href="#movie-0506">5.6 - Styling the Menu with Icons from FontAwesome</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#chapter-06">Chapter 6: Adding a Custom Search Form</a>
+                <ul>
+                    <li><a href="#movie-0601">6.1 - Adding the Search Icon and Search Form</a></li>
+                    <li><a href="#movie-0602">6.2 - Addint the Search Icon</a></li>
+                    <li><a href="#movie-0603">6.3 - Adding Show/Hide Functionality to the Search Form</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#chapter-07">Chapter 7: Working with Widgetized Areas</a>
+                <ul>
+                    <li><a href="#movie-0701">7.1 - Adding a Widtetized Area to the Footer</a></li>
+                    <li><a href="#movie-0703">7.3 - Styling the Footer</a></li>
+                    <li><a href="#movie-0704">7.4 - General Widget Styling</a></li>
+                    <li><a href="#movie-0705">7.5 - Adding Custom Styles to Specific Widgets</a></li>
+                    <li><a href="#movie-0706">7.6 - Using Masonry to Make Footer Widgets Responsive</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#chapter-08">Chapter 8: The Single Post Template</a>
+                <ul>
+                    <li><a href="#movie-0801">8.1 - Changing the Single Post Template Content Structure</a></li>
+                    <li><a href="#movie-0802">8.2 - Changing the Output of Meta Elements</a></li>
+                    <li><a href="#movie-0803">8.3 - Styling the Single Post Template</a></li>
+                    <li><a href="#movie-0804">8.4 - Making Post Meta Responsive</a></li>
+                    <li><a href="#movie-0805">8.5 - Styling Blockquotes</a></li>
+                    <li><a href="#movie-0806">8.6 - Creating Pull-Quotes and Pull-Images</a></li>
+                    <li><a href="#movie-0807">8.7 - Working with Image Captions</a></li>
+                    <li><a href="#movie-0808">8.8 - Working with Image Galleries</a></li>
+                    <li><a href="#movie-0809">8.9 - Single Post Navigation</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#chapter-09">Chapter 9: Working with Comments</a>
+                <ul>
+                    <li><a href="#movie-0901">9.1 - Working with the Comments Template</a></li>
+                    <li><a href="#movie-0902">9.2 - Using Gravatars in Comments</a></li>
+                    <li><a href="#movie-0903">9.3 - Styling Comments</a></li>
+                    <li><a href="#movie-0904">9.4 - Highlighting Post Author Comments</a></li>
+                    <li><a href="#movie-0905">9.5 - Styling the Comment Form</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#chapter-10">Chapter 10: Working with Featured Images</a>
+                <ul>
+                    <li><a href="#movie-1002">10.2 - Defining Featured Image Sizes</a></li>
+                    <li><a href="#movie-1004">10.4 - Adding Featured Images to a Template</a></li>
+                    <li><a href="#movie-1005">10.5 - Styling the Featured Image</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#chapter-11">Chapter 11: Working with Index Templates</a>
+                <ul>
+                    <li><a href="#movie-1102">11.2 - Customizing and Styling Index Templates</a></li>
+                    <li><a href="#movie-1103">11.3 - Displaying Excerpts or Full Content on Index Pages</a></li>
+                    <li><a href="#movie-1104">11.4 - Adding a Custom Read More Link</a></li>
+                    <li><a href="#movie-1105">11.5 - Adding Featured Images</a></li>
+                    <li><a href="#movie-1106">11.6 - Creating Custom Pagination</a></li>
+                    <li><a href="#movie-1107">11.7 - Highlighting Sticky Posts</a></li>
+                    <li><a href="#movie-1108">11.8 - Creating Custom Post Format Templates</a></li>
+                    <li><a href="#movie-1109">11.9 - Creating a Custom Display for the Most Recent Posts</a></li>
+                    <li><a href="#movie-1111">11.11 - Working with archive.php</a></li>
+                    <li><a href="#movie-1112">11.12 - Customizing the Search Results and 404 Templates</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#chapter-12">Chapter 12: Working with Static Pages</a>
+                <ul>
+                    <li><a href="#movie-1201">12.1 - Styling Pages</a></li>
+                    <li><a href="#movie-1202">12.2 - Creating Custom Page Templates</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#chapter-13">Chapter 13: Back End Customization</a>
+                <ul>
+                    <li><a href="#movie-1301">13.1 - Adding Editor Styles to Match Front-End Styles</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="wrapper">
+
+    <div id="main">
+        <section id="chapter-03" class="chapter">
+            <h2 class="chsapter-title">Chapter 3: Setting up the basic theme</h1>
+            <article id="movie-0303" class="movie">
+                <h3 class="movie-title">3.3 - Enabling custom fonts and font icons</h3>
+                <h4>In functions.php:</h4>
+                <pre><code class="language-php">
+wp_enqueue_style( 'my-simone-google-fonts', 'http://fonts.googleapis.com/css?family=Lato:100,300,400,400italic,700,900,900italic|PT+Serif:400,700,400italic,700italic' );
+                    
+// FontAwesome
+wp_enqueue_style('my-simone_fontawesome', 'http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css');
+                </code></pre>
+            </article><!-- .movie -->
+            <article id="movie-0304" class="movie">
+                <h3 class="movie-title">3.4 - Applying Global Styles</h3>
+                <h4>In style.css:</h4>
+                <pre><code class="language-css">
+body,
+button,
+input,
+select,
+textarea {
+    font-size: 18px;
+    font-size: 1.8rem;
+    font-family: 'PT Serif', serif;
+    line-height: 1.5;
+    color: #404040;
+    color: hsl(0, 0%, 25%);
+}
+h1, h2, h3, h4, h5, h6 {
+    clear: right;
+    font-weight: 900;
+    font-family: 'Lato', sans-serif;
+    color: #000;
+    color: hsl(0, 0%, 0%);
+    -ms-word-break: break-word;
+    word-break: break-word;
+}
+                    
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    padding: 1em 2em;
+    font-size: 16px;
+    font-size: 1.6rem;
+    font-family: 'Lato';
+    text-transform: uppercase;
+    line-height: 1;
+    color: hsl(0, 0%, 100%);
+    background: #3c3c3c;
+    background: hsl(0, 0%, 24%);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer; /* Improves usability and consistency of cursor style between image-type 'input' and others */
+    -webkit-appearance: button; /* Corrects inability to style clickable 'input' types in iOS */
+}
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+    background: #000;
+    background: hsl(0, 0%, 0%);
+}
+button:focus,
+input[type="button"]:focus,
+input[type="reset"]:focus,
+input[type="submit"]:focus,
+button:active,
+input[type="button"]:active,
+input[type="reset"]:active,
+input[type="submit"]:active {
+    background: #000;
+    background: hsl(0, 0%, 0%);
+}
+                    
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+textarea {
+    padding: 8px;
+    font-family: 'Lato', sans-serif;
+    color: #333;
+    border: 1px solid #ccc;
+}
+                    
+a {
+    text-decoration: none;	
+    color: #000;
+    color: hsl(0, 0%, 0%);    
+}
+
+a:visited {
+    color: #333;
+    color: hsl(0, 0%, 20%);
+}
+
+a:hover,
+a:focus,
+a:active { 
+    text-decoration: underline; 
+}
+                </code></pre>
+            </article><!-- .movie -->
+            <article id="movie-0305" class="movie">
+                <h3 class="movie-title">3.5 - Styling basic layout components</h3>
+                <h4>In functions.php:</h4>
+                <pre><code class="language-php">
+wp_enqueue_style( 'my-sinome-layout-style' , get_template_directory_uri() . '/layouts/content-sidebar.css');
+                </code></pre>
+                <h4>In /layouts/content-sidebar.css</h4>
+                <pre><code class="language-css">
+.content-area {
+    width: 100%;
+    float: left;
+    margin-left: -380px;
+    padding-left: 380px;
+}
+.site-main {
+    background: #b2b2b2;
+}
+.site-content .widget-area {
+    width: 380px;
+    float: right;
+    padding: 4rem;
+    background: #fff;
+    background: hsl(0, 0%, 100%);
+}
+.site-footer {
+    clear: both;
+    width: 100%;
+}
+
+.entry-header,
+.entry-content,
+.entry-meta,
+.entry-footer,
+.tag-links,
+.post-navigation,
+.comments-area,
+.paging-navigation {
+    position: relative;
+    max-width: 780px;
+    max-width: 78rem;
+    padding: 0 4rem;
+    margin: 0 auto;
+}
+                </code></pre>    
+            </article><!-- .movie -->
+            <article id="movie-0306" class="movie">
+                <h3 class="movie-title">3.6 - Making the site layout responsive</h3>
+                <h4>In /layouts/content-sidebar.css</h4>
+                <pre><code class="language-css">
+.site-content {
+    background: #b2b2b2;
+}
+.site-content .widget-area {
+    width: 380px;
+    float: right;
+    padding: 4rem;
+    background: #fff;
+    background: hsl(0, 0%, 100%);
+}
+.site-footer {
+    clear: both;
+    width: 100%;
+}
+
+.entry-header,
+.entry-content,
+.entry-meta,
+.entry-footer,
+.tag-links,
+.post-navigation,
+.comments-area,
+.paging-navigation {
+    position: relative;
+    max-width: 780px;
+    max-width: 78rem;
+    padding: 0 4rem;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 1540px) {
+    .content-area {
+        float: left;
+        width: 100%;
+        margin-right: -380px;
+    }
+}
+
+@media screen and (min-width: 1160px) and (max-width: 1539px) {
+    .content-area {
+        width: 100%;
+        float: left;
+        margin-left: -380px;
+        padding-left: 380px;
+    }
+    
+    .entry-header,
+    .entry-content,
+    .entry-meta,
+    .entry-footer,
+    .tag-links,
+    .post-navigation,
+    .comments-area,
+    .paging-navigation { 
+        margin-right: 0; 
+    }
+    
+}
+
+@media screen and (max-width: 1159px) {  
+    .site-content .widget-area {
+        width: auto;
+        max-width: 780px;
+        float: none;
+        margin: 1em auto 0;
+    }
+}
+                </code></pre>
+            </article><!-- .movie -->
+        </section><!-- #chapter-03 -->
+        <section id="chapter-04" class="chapter">
+            <h2 class="chapter-title">Chapter 4: Building the Header</h1>
+            <article id="movie-0401" class="movie">
+                <h3 class="movie-title">4.1 - Styling the Default Header</h3>
+                <h4>In style.css:</h4>
+                <pre><code class="language-css">
+.site-branding {
+    padding: 6rem 0;
+    text-align: center;
+    background: #2c86ba;
+    background: hsl(202, 62%, 45%);
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 40px;
+    font-size: 4.5rem;
+    text-transform: uppercase;
+    line-height: normal;
+    padding-bottom: 1rem;
+}
+
+.site-description {
+    font-weight: 100;
+    font-size: 20px;
+    font-size: 2rem;
+}
+                    
+.title-box {
+    width: 600px;
+    max-width: 75%;
+    padding: 4rem;
+    margin: 0 auto;
+    border: solid 1px #fff;
+    border: solid 1px hsla(0, 0%, 100%, .3);
+}
+                    
+.site-branding a { 
+    text-decoration: none; 
+}
+
+.site-title a,
+.site-description { 
+    color: #fff;
+    color: hsl(0, 0%, 100%);
+}
+                    
+/* Header responsive */
+@media screen and (max-width: 600px) {
+    .site-branding { padding: 0; }
+    
+    .title-box {
+        max-width: 100%;
+        margin: 0;
+        padding: 4rem;
+        border: none;
+    }
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0402" class="movie">
+                <h3 class="movie-title">4.2 - Hiding the site title and tagline</h3>
+                <h4>In inc/custom-header.php</h4>
+                <pre><code class="language-css">
+.site-branding {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+                </code></pre>
+                <h4>In js/customizer.js</h4>
+                <pre><code class="language-php">
+if ( 'blank' === to ) {
+    $( '.site-branding' ).css( {
+        'clip': 'rect(1px, 1px, 1px, 1px)',
+        'position': 'absolute'
+    } );
+} else {
+    $( '.site-branding, .site-title a ,.site-description' ).css( {
+        'clip': 'auto',
+        'color': to,
+        'position': 'relative'
+    } );
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0403" class="movie">
+                <h3 class="movie-title">4.3 - Adding an Optional Header Image Function</h3>
+                <h4>In header.php</h4>
+                <pre data-src="testing.html"></pre>
+                <pre><code class="language-php">
+&lt;?php if ( get_header_image() ) : ?>
+&lt;div class="header-image">
+    &lt;a href="&lt;?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+        &lt;img src="&lt;?php header_image(); ?>" width="&lt?php echo get_custom_header()->width; ?>" height="&lt?php echo get_custom_header()->height; ?>" alt="">
+    &lt;/a>
+&lt;/div>
+&lt;?php endif; // End header image check. ?>
+                </code></pre>
+                <h4>In inc/custom-header.php</h4>
+                <pre><code class="language-php">
+function my_simone_custom_header_setup() {
+	add_theme_support( 'custom-header', apply_filters( 'my_simone_custom_header_args', array(
+		'default-image'          => '',
+		'default-text-color'     => 'ffffff',
+		'width'                  => 1280,
+		'height'                 => 300,
+		'flex-height'            => false,
+		'wp-head-callback'       => 'my_simone_header_style',
+		'admin-head-callback'    => 'my_simone_admin_header_style',
+		'admin-preview-callback' => 'my_simone_admin_header_image',
+	) ) );
+}
+add_action( 'after_setup_theme', 'my_simone_custom_header_setup' );
+                </code></pre>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+.header-image img {
+    display: block;
+    margin: 0 auto;
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0404" class="movie">
+                <h3 class="movie-title">4.4 - Placing the header image behind the site title</h3>
+                <h4>In header.php</h4>
+                <pre><code class="language-php">
+&lt;?php if ( get_header_image() && ('blank' == get_header_textcolor()) ) { ?>
+    &lt;figure class="header-image">
+        &lt;a href="&lt;?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                &lt;img src="&lt;?php header_image(); ?>" width="&lt; ?>" height="&lt;?php echo get_custom_header()->height; ?>" alt="">
+        &lt;/a>
+    &lt;/figure>
+&lt;?php } // End header image check. ?>
+&lt;?php 
+    if ( get_header_image() && !('blank' == get_header_textcolor()) ) { 
+        echo '&lt;div class="site-branding header-background-image" style="background-image: url(' . get_header_image() . ')">'; 
+    } else {
+        echo '&lt;div class="site-branding">';
+    }
+?>
+&lt;div class="title-box">
+    &lt;h1 class="site-title">&lt;a href="&lt;?php echo esc_url( home_url( '/' ) ); ?>" rel="home">&lt;?php bloginfo( 'name' ); ?>&lt;/a>&lt;/h1>
+    &lt;h2 class="site-description">&lt;?php bloginfo( 'description' ); ?>&lt;/h2>
+&lt;/div>
+&lt;/div>   
+                </code></pre>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+.header-background-image {
+    background: no-repeat center;
+    background-size: cover!important;
+    -moz-background-size: cover!important;
+    -webkit-background-size: cover!important;
+}
+
+.header-background-image .title-box {
+    background: #333;
+    background: hsla(0, 0%, 0%, .7);
+}    
+                </code></pre>
+            </article><!-- .movie -->
+        </section><!-- #chapter-04 -->
+        
+        
+        <section id="chapter-05" class="chapter">
+            <h2 class="chapter-title">Chapter 5: Working with Menus</h1>
+            <article id="movie-0502" class="movie">
+                <h3 class="movie-title">5.2 - Styling the Menu</h3>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+/*--------------------------------------------------------------
+5.2 Menus
+--------------------------------------------------------------*/
+.main-navigation {
+    position: relative;
+    float: left;
+    width: 100%;
+    display: block;
+    clear: both;
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+    background: #313131;
+    background: hsl(0, 0%, 19%);
+}
+.main-navigation ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+.main-navigation li {
+    float: left;
+    position: relative;
+}
+.main-navigation a {
+    display: block;
+    padding: 1.3em 1em;
+    font-size: 14px;
+    font-size: 1.4rem;
+    text-decoration: none;
+    line-height: 1.3em;
+    color: white;
+    color: hsl(0, 0%, 100%);
+}
+.main-navigation ul ul {
+    position: absolute;
+    left: 0;
+    z-index: 99999;
+    display: none;
+    float: left;
+    padding: 0;
+    background: #4d4d4d;
+    background: hsl(0, 0%, 30%);
+}
+.main-navigation ul ul ul {
+    left: 100%;
+    top: 0;
+}
+.main-navigation ul ul a {
+    width: 200px;
+}
+.main-navigation ul ul li {
+}
+.main-navigation li:hover > a {
+    color: #fff;
+    color: hsl(0, 0%, 100%);
+    background: #4d4d4d;
+    background: hsl(0, 0%, 30%);
+}
+.main-navigation ul ul :hover > a {
+}
+.main-navigation ul ul a:hover {
+    background: #313131;
+    background: hsl(0, 0%, 19%);
+}
+.main-navigation ul li:hover > ul {
+    display: block;
+}
+.main-navigation .current_page_item > a,
+.main-navigation .current-menu-item > a,
+.main-navigation .current_page_item > a:hover,
+.main-navigation .current-menu-item > a:hover {
+    background: white;
+    color: #313131;
+    color: hsl(0, 0%, 19%);
+}
+
+.main-navigation .current_page_ancestor {
+    background: #4d4d4d;
+    background: hsl(0, 0%, 30%);
+}
+
+.main-navigation ul ul .current_page_parent,
+.main-navigation .current_page_parent .current_page_item > a {
+    color: #fff;
+    color: hsl(0, 0%, 100%);
+    background: #313131;
+    background: hsl(0, 0%, 19%);
+} 
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0503" class="movie">
+                <h3 class="movie-title">5.3 - Using SuperFish for Accessible Menus</h3>
+                <h4>In functions.php</h4>
+                <pre><code class="language-php">
+wp_enqueue_script( 'my-simone-superfish', get_template_directory_uri() . '/js/superfish.min.js', array('jquery'), '20140328', true );
+                </code></pre>
+                <h4>In js/superfish-settings.js</h4>
+                <pre><code class="language-javascript">
+/* 
+ * Custom Superfish settings
+ */
+
+jQuery(document).ready(function($){
+    var sf = $('ul.nav-menu');
+    sf.superfish({
+        delay: 200,
+        speed: 'fast'
+    });
+});
+                </code></pre>
+				<h4>In functions.php</h4>
+                <pre><code class="language-php">
+wp_enqueue_script( 'my-simone-superfish-settings', get_template_directory_uri() . '/js/superfish-settings.js', array('my-simone-superfish'), '20140328', true );
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0504" class="movie">
+                <h3 class="movie-title">5.4 - Making the Menu Responsive</h3>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+@media screen and (max-width: 600px) {
+	.menu-toggle {
+            display: block;
+            height: 3.75em;
+            padding: 0 1em;
+            font-weight: normal;
+            font-size: 14px;
+            font-size: 1.4rem;
+            text-decoration: none;
+            line-height: 3.75em;
+            color: white;
+	}
+        
+	.main-navigation.toggled .nav-menu {
+		display: block;
+		border-top: 1px solid;
+		border-top-color: #fff;
+		border-top-color: hsla(0, 0%, 100%, .5);
+	}
+
+	.main-navigation ul {
+            display: none;
+            padding-left: 0;
+	}
+        
+	.main-navigation li { 
+		float: none; 
+	}
+
+	.main-navigation li a { 
+		padding: 1.3em 2em; 
+	}
+
+	.main-navigation li li a { 
+		padding-left: 4em; 
+	}
+
+	.main-navigation li li li a { 
+		padding-left: 6em; 
+	}
+
+	.main-navigation li:hover > a {
+		background: #313131;
+		background: hsl(0, 0%, 19%);
+	}
+	
+	.main-navigation ul ul,
+	.main-navigation ul ul ul {
+		position: relative;
+		top: inherit;
+		left: 0;
+		display: block;
+		float: none;
+		background: #313131;
+		background: hsl(0, 0%, 19%);
+	}
+	
+	.main-navigation ul ul a { width: 100%; }
+
+	.main-navigation ul a:hover,
+	.main-navigation ul ul a:hover {
+		background: #4d4d4d;
+		background: hsl(0, 0%, 30%);
+	}
+
+	.main-navigation .current_page_ancestor { background: inherit; }
+
+	.main-navigation ul ul .current_page_parent {
+		color: inherit;
+		background: inherit;
+	}
+
+	.main-navigation .current_page_item > a,
+	.main-navigation .current_page_item > a:hover,
+	.main-navigation .current_page_item li:hover,
+	.main-navigation .current_page_parent .current_page_item > a  {
+		color: #fff;
+		color: hsl(0, 0%, 100%);
+		background: #4d4d4d;
+		background: hsl(0, 0%, 30%);    
+	}
+        
+} // End responsive menu
+                </code></pre>
+                <h4>In js/superfish-settings.js</h4>
+                <pre><code class="language-javascript">
+/* 
+ * Custom Responsive Superfish settings
+ */
+
+jQuery(document).ready(function($){
+	var breakpoint = 600;
+    var sf = $('ul.nav-menu');
+	
+    if($(document).width() >= breakpoint){
+        sf.superfish({
+            delay: 200,
+            speed: 'fast'
+        });
+    }
+	
+    $(window).resize(function(){
+        if($(document).width() >= breakpoint & !sf.hasClass('sf-js-enabled')){
+            sf.superfish({
+                delay: 200,
+                speed: 'fast'
+            });
+        } else if($(document).width() < breakpoint) {
+            sf.superfish('destroy');
+        }
+    });
+});
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0505" class="movie">
+                <h3 class="movie-title">5.5 - Creating a Custom Social Media Menu</h3>
+                <h4>In functions.php</h4>
+                <pre><code class="language-php">
+'social' => __( 'Social Menu', 'my-simone'),
+                </code></pre>
+                <h4>In inc/template-tags.php</h4>
+                <pre><code class="language-php">
+/*
+ * Social media icon menu as per http://justintadlock.com/archives/2013/08/14/social-nav-menus-part-2
+ */
+
+function my_simone_social_menu() {
+    if ( has_nav_menu( 'social' ) ) {
+	wp_nav_menu(
+		array(
+			'theme_location'  => 'social',
+			'container'       => 'div',
+			'container_id'    => 'menu-social',
+			'container_class' => 'menu-social',
+			'menu_id'         => 'menu-social-items',
+			'menu_class'      => 'menu-items',
+			'depth'           => 1,
+			'fallback_cb'     => '',
+		)
+	);
+    }
+}
+                </code></pre>
+				<h4>In header.php</h4>
+				<pre><code class="language-php">
+&lt;?php my_simone_social_menu(); ?>
+				</code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0506" class="movie">
+                <h3 class="movie-title">5.6 - Styling the menu with icons from FontAwesome</h3>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+/* Social Menu */
+
+.menu-social ul {
+    float: right;
+    text-align: center;
+    list-style: none;    
+}
+
+.menu-social ul li {
+    position: relative;
+    display:  inline-block;    
+}
+
+.menu-social li a:before {
+    display: inline-block;
+    padding: 0 5px;
+    vertical-align: top;
+    font-family: 'Fontawesome';
+    font-size: 20px;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    content: '\f0c0';
+}
+
+.menu-social li a[href*="facebook.com"]::before { content: '\f09a'; }
+
+.menu-social li a[href*="twitter.com"]::before { content: '\f099'; }
+
+.menu-social li a[href*="dribbble.com"]::before { content: '\f17d'; }
+
+.menu-social li a[href*="plus.google.com"]::before { content: '\f0d5'; }
+
+.menu-social li a[href*="pinterest.com"]::before { content: '\f0d2'; }
+
+.menu-social li a[href*="github.com"]::before { content: '\f09b'; }
+
+.menu-social li a[href*="tumblr.com"]::before { content: '\f173'; }
+
+.menu-social li a[href*="youtube.com"]::before { content: '\f167'; }
+
+.menu-social li a[href*="flickr.com"]::before { content: '\f16e'; }
+
+.menu-social li a[href*="vimeo.com"]::before { content: '\f194'; }
+
+.menu-social li a[href*="instagram.com"]::before { content: '\f16d'; }
+
+.menu-social li a[href*="linkedin.com"]::before { content: '\f0e1'; }
+                    
+@media screen and (max-width: 600px) {
+    #menu-social ul {
+	    position: absolute;
+        top: 0;
+        right: 6rem;
+        display: block;
+    }
+    
+    #menu-social li a { 
+        padding-left:.5em;
+        padding-right: .5em;
+    }
+}
+                </code></pre>
+                <h4>In inc/template-tags.php</h4>
+                <pre><code class="language-php">
+function my_simone_social_menu() {
+    if ( has_nav_menu( 'social' ) ) {
+	wp_nav_menu(
+		array(
+			'theme_location'  => 'social',
+			'container'       => 'div',
+			'container_id'    => 'menu-social',
+			'container_class' => 'menu-social',
+			'menu_id'         => 'menu-social-items',
+			'menu_class'      => 'menu-items',
+			'depth'           => 1,
+			'link_before'     => '&lt;span class="screen-reader-text">',
+			'link_after'      => '&lt;/span>',
+			'fallback_cb'     => '',
+		)
+	);
+    }
+}
+                </code></pre>
+            </article><!-- .movie -->
+        </section><!-- #chapter-05 -->
+    
+        <section id="chapter-06" class="chapter">
+            <h2 class="chapter-title">Chapter 6: Adding a Custom Search Form</h1>
+            <article id="movie-0601" class="movie">
+                <h3 class="movie-title">6.1 - Adding the search form</h3>
+                <h4>In header.php</h4>
+                <pre><code class="language-php">
+&lt;div id="search-container" class="search-box-wrapper clear">
+    &lt;div class="search-box clear">
+        &lt;?php get_search_form(); ?>
+    &lt;/div>
+&lt;/div> 
+                </code></pre>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">                    
+/* Header search */
+
+input[type="search"] {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.search-box-wrapper {
+    z-index: 2;
+    width: 100%;
+}
+
+.search-box {
+    padding: 1em;
+    background: #4d4d4d;
+    background: hsl(0, 0%, 30%);
+}
+
+.search-box .search-field {
+    max-width: 362px;
+    float: right;
+    padding: 1rem 2rem 1rem 4rem;
+    font-size: 20px;
+    font-size: 2rem;
+    background-color: #fff;
+    border: 0;
+}
+
+.error404 .search-submit,
+.search .search-submit,
+.search-box .search-submit { 
+    display: none; 
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0602" class="movie">
+                <h3 class="movie-title">6.2 - Adding the search icon</h3>
+                <h4>In header.php</h4>
+                <pre><code class="language-markup">
+&lt;div class="search-toggle">
+    &lt;i class="fa fa-search">&lt;/i>
+    &lt;a href="#search-container" class="screen-reader-text">&lt;?php _e( 'Search', 'my-simone' ); ?>&lt;/a>
+&lt;/div>
+                </code></pre>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+.search-toggle {
+    float: right;
+    width: 54px;
+    height: 54px;
+    padding: 12px;
+    margin-right: 20px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.search-toggle:hover,
+.search-toggle.active {
+    background: #4d4d4d;
+    background: hsl(0, 0%, 30%);
+}
+
+@media screen and (max-width: 600px) {
+    .search-toggle {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-right: 0;
+    }
+}
+                </code></pre>
+                
+            </article><!-- .movie -->
+            
+            <article id="movie-0603" class="movie">
+                <h3 class="movie-title">6.3 - Adding show/hide functionality to the search form with jQuery</h3>
+                <h4>In js/hide-search.js</h4>
+                <pre><code class="language-javascript">
+/* 
+ * Toggles search on and off
+ */
+jQuery(document).ready(function($){
+    $(".search-toggle").click(function(){
+        $("#search-container").slideToggle('slow', function(){
+            $('.search-toggle').toggleClass('active');
+        });
+        // Optional return false to avoid the page "jumping" when clicked
+        return false;
+    });
+});
+                </code></pre>
+                <h4>In functions.php</h4>
+                <pre><code class="language-php">
+wp_enqueue_script( 'my-simone-hide-search', get_template_directory_uri() . '/js/hide-search.js', array(), '20140404', true );
+                </code></pre>
+				<h4>In style.css</h4>
+                <pre><code class="language-css">
+.search-box-wrapper {
+    z-index: 2;
+    width: 100%;
+    display: none;
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+        </section><!-- #chapter-06 -->
+    
+        <section id="chapter-07" class="chapter">
+            <h2 class="chapter-title">Chapter 7: Working with Widgetized Areas</h1>
+            <article id="movie-0701" class="movie">
+                <h3 class="movie-title">7.1 - Adding a widgetized area to the footer</h3>
+                <h4>In functions.php</h4>
+                <pre><code class="language-php">
+register_sidebar( array(
+    'name'          => __( 'Footer Widgets', 'my-simone' ),
+    'description'   => __( 'Footer widgets area appears in the footer of the site.', 'my-simone' ),
+    'id'            => 'sidebar-2',
+    'before_widget' => '&lt;aside id="%1$s" class="widget %2$s">',
+    'after_widget'  => '&lt;/aside>',
+    'before_title'  => '&lt;h1 class="widget-title">',
+    'after_title'   => '&lt;/h1>',
+) );
+                </code></pre>
+                <h4>In sidebar-footer.php</h4>
+                <pre><code class="language-php">
+&lt;?php
+/**
+ * The footer sidebar
+ *
+ */
+
+if ( ! is_active_sidebar( 'sidebar-2' ) ) {
+	return;
+}
+?>
+
+&lt;div id="supplementary">
+	&lt;div id="footer-widgets" class="footer-widgets widget-area clear" role="complementary">
+		&lt;?php dynamic_sidebar( 'sidebar-2' ); ?>
+	&lt;/div>&lt;!-- #footer-sidebar -->
+&lt;/div>&lt;!-- #supplementary -->
+                </code></pre>
+                <h4>In footer.php</h4>
+                <pre><code class="language-php">
+&lt;?php get_sidebar( 'footer' ); ?>
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0703" class="movie">
+                <h3 class="movie-title">7.3 - Styling the footer</h3>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+/*--------------------------------------------------------------
+ Footer
+--------------------------------------------------------------*/
+
+.site-footer {
+    padding: 2em;
+    font-family: 'Lato';
+    font-size: 16px;
+    font-size: 1.6rem;
+    color: #fff;
+    color: hsl(0, 0%, 100%);
+    background: #313131;
+    background: hsl(0, 0%, 19%);
+}
+
+.site-footer a {
+    color: #fff;
+    color: hsl(0, 0%, 100%);
+}
+
+.site-info { 
+    text-align: center; 
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0704" class="movie">
+                <h3 class="movie-title">7.4 - General Widget Styling</h3>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+/*--------------------------------------------------------------
+9.0 Widgets
+--------------------------------------------------------------*/
+.widget {
+    margin: 0 0 4em;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-size: 1.6rem;
+}
+
+.widget-title {
+    margin-bottom: 1em;    
+    font-size: 24px;
+    font-size: 2.4rem;
+    border-bottom: 2px solid #000;    
+}
+
+.widget a {
+    font-weight: 700;
+    color: #000;
+    color: hsl(0, 0%, 0%);
+}
+
+.widget ul,
+.widget ol {
+    padding: 0;
+    margin: -1em 0 0;
+    list-style-type: none;
+}
+
+.widget li { padding: 1em 0 0; }
+
+.widget li ul,
+.widget li ol { margin-top: 0; }
+
+.widget li li { margin-left: 1.5em; }
+
+/* Make sure select elements fit in widgets */
+.widget select {
+	max-width: 100%;
+}
+
+/* Search widget */
+.widget_search .search-submit {
+	display: none;
+}
+
+.footer-widgets { margin: 0 auto; }
+
+.footer-widgets .widget-title,
+.footer-widgets .widget a:hover {
+    color: #fff;
+    color: hsl(0, 0%, 100%);
+    border-color: #fff;
+    border-color: hsl(0, 0%, 100%);
+}
+
+.footer-widgets .widget {
+    float: left;
+    width: 320px;
+    margin: 0 4rem 8rem 4rem;
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+            </article><!-- .movie -->
+            
+            <article id="movie-0705" class="movie">
+                <h3 class="movie-title">7.5 - Adding custom styles to specific widgets</h3>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+.widget_recent_entries li:before,
+.widget_recent_comments li:before,
+.widget_archive li:before {
+    display: block;
+    float: left;
+    padding-top: 2px;
+    margin-left: -2.5em;
+    font-family: 'fontawesome';
+    font-size: 14px;
+    font-size: 1.4rem;
+} 
+
+.widget_recent_entries li,
+.widget_recent_comments li { margin: 0 0 .5em 2.5em; }
+
+.widget_recent_entries li:before { content: "\f036"; }
+
+.widget_recent_comments li:before { content: "\f075"; }
+
+.widget_archive li { margin: 0 0 0 2.5em; }
+
+.widget_archive li:before { content: "\f187"; }
+
+.widget_nav_menu a,
+.widget_pages a {
+    display: block;
+    padding: 1em 0;
+    border-bottom: solid 1px hsl(0, 0%, 90%);
+}
+
+.widget_nav_menu li,
+.widget_pages li { padding-top: 0; }
+
+.widget_rss li { margin-bottom: .5em; }
+
+.widget_rss .rss-date,
+.widget_rss cite {
+    display: block;
+    font-size: 85%;
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0706" class="movie">
+                <h3 class="movie-title">7.6 - Using Masonry to make footer widgets responsive</h3>
+                <h4>Simple Masonry in js/masonry-settings.js</h4>
+                <pre><code class="language-javascript">
+// Masonry settings to organize footer widgets
+jQuery(document).ready(function($){
+   $('#footer-widgets').masonry({
+       columnWidth: 400,
+       itemSelector: '.widget',
+       isFitWidth: true,
+       isAnimated: true
+   }); 
+});
+                </code></pre>
+                <h4>In functions.php</h4>
+                <pre><code class="language-php">
+wp_enqueue_script( 'my-simone-masonry', get_template_directory_uri() . '/js/masonry-settings.js', array('masonry'), '20140401', true );
+                </code></pre>
+                <h4>Advanced responsive Masonry in js/masonry-settings.js</h4>
+                <pre><code class="language-javascript">
+// Masonry settings to organize footer widgets
+jQuery(document).ready(function($){
+    var $container = $('#footer-widgets');
+    var $masonryOn;
+    var $columnWidth = 400;
+    
+    if ($(document).width() > 879) {;
+        $masonryOn = true;
+        runMasonry();
+    };
+
+    $(window).resize( function() {
+        if ($(document).width() < 879) {
+            if ($masonryOn){
+                $container.masonry('destroy');
+                $masonryOn = false;
+            }
+
+        } else {
+            $masonryOn = true;
+            runMasonry();
+        }
+    });
+    
+    function runMasonry() {
+        // initialize
+        $container.masonry({
+            columnWidth: $columnWidth,
+            itemSelector: '.widget',
+            isFitWidth: true,
+            isAnimated: true
+        });
+    };
+    
+});
+                </code></pre>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+/* Footer widgets responsive */
+@media screen and (max-width: 879px) {
+    #footer-widgets { width: 100%!important; }
+    
+    .footer-widgets .widget {
+        float: none;
+        width: 100%;
+        margin: 0 0 8rem;
+    }
+}
+                </code></pre>
+            </article><!-- .movie -->
+        </section><!-- #chapter-07 -->
+    
+        <section id="chapter-08" class="chapter">
+            <h2 class="chapter-title">Chapter 8: The Single Post Template</h1>
+            <article id="movie-0801" class="movie">
+                <h3 class="movie-title">8.1 - Changing the Single Post Template Content Structure</h3>
+                <h4>In content-single.php</h4>
+                <pre><code class="language-php">
+&lt;?php
+    /* translators: used between list items, there is a space after the comma */
+    $category_list = get_the_category_list( __( ', ', 'my-simone' ) );
+
+    if ( my_simone_categorized_blog() ) {
+        echo '&lt;div class="category-list">' . $category_list . '&lt;/div>';
+    }
+?>
+                </code></pre>
+                <h4>In content-single.php</h4>
+                <pre><code class="language-php">
+&lt;?php
+    echo get_the_tag_list( '&lt;ul>&lt;li>&lt;i class="fa fa-tag">&lt;/i>', '&lt;/li>&lt;li>&lt;i class="fa fa-tag">&lt;/i>', '&lt;/li>&lt;/ul>' );
+?>
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0802" class="movie">
+                <h3 class="movie-title">8.2 - Changing the output of meta elements</h3>
+                <h4>In inc/template-tags.php</h4>
+                <pre><code class="language-php">
+printf( __( '&lt;span class="byline">Written by %1$s&lt;/span>&lt;span class="posted-on">%2$s&lt;/span>', 'my-simone' ),
+    sprintf( '&lt;span class="author vcard">&lt;a class="url fn n" href="%1$s">%2$s&lt;/a>&lt;/span>',
+        esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+        esc_html( get_the_author() )
+    ),
+        sprintf( '&lt;a href="%1$s" rel="bookmark">%2$s&lt;/a>',
+        esc_url( get_permalink() ),
+        $time_string
+    )
+);
+                </code></pre>
+                <h4>In content-single.php</h4>
+                <pre><code class="language-php">
+&lt;?php 
+    if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) { 
+        echo '&lt;span class="comments-link">';
+        comments_popup_link( __( 'Leave a comment', 'my-simone' ), __( '1 Comment', 'my-simone' ), __( '% Comments', 'my-simone' ) );
+        echo '&lt;/span>';
+    }
+?>
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0803" class="movie">
+                <h3 class="movie-title">8.3 - Styling the single post template</h3>
+                <h4>In layouts/content-sidebar.css</h4>
+                <pre><code class="language-css">
+.site-content {
+    padding-bottom: 4em;
+    background: #b2b2b2;
+}
+.single .site-content,
+.page .site-content { 
+    background: #fff; 
+    background: hsl(0, 0%, 100%);
+}
+                </code></pre>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+/* Typography */
+.entry-title {
+    margin: 0 0 2rem;
+    font-weight: 900;
+    font-size: 40px;
+    font-size: 4rem;
+    line-height: 1.3em;
+    color: #000;
+    color: hsl(0, 0%, 0%);
+}
+
+.entry-content a { 
+    text-decoration: underline; 
+}
+                    
+.entry-content h1,
+.entry-content h2,
+.entry-content h3,
+.entry-content h4,
+.entry-content h5,
+.entry-content h6 { margin-bottom: .4em; }
+
+.entry-content h1 {
+    font-size: 32px;
+    font-size: 3.2rem;
+}
+
+.entry-content h2 {
+    font-size: 30px;
+    font-size: 3.0rem;
+}
+
+.entry-content h3 {
+    font-size: 28px;
+    font-size: 2.8rem;
+}
+
+.entry-content h4 {
+    font-size: 26px;
+    font-size: 2.6rem;
+}
+
+.entry-content h5 {
+    font-size: 24px;
+    font-size: 2.4rem;
+}
+
+.entry-content h6 {
+    font-size: 22px;
+    font-size: 2.2rem;
+}
+
+.entry-content p,
+.entry-content ul,
+.entry-content ol {
+    font-size: 20px;
+    font-size: 2rem;
+    line-height: 1.6em;
+}
+
+.entry-content blockquote p {
+    font-size: 28px;
+    font-size: 2.8rem;
+    line-height: 1.5em;
+}
+
+/* Smaller fonts for smaller screens */
+@media screen and (max-width: 680px) {
+    .entry-title {
+        font-size: 32px;
+        font-size: 3.2rem;
+        line-height: 1.3em;
+    }
+    .entry-content h1 {
+        font-size: 28px;
+        font-size: 2.8rem;
+    }
+
+    .entry-content h2 {
+        font-size: 26px;
+        font-size: 2.6rem;
+    }
+
+    .entry-content h3 {
+        font-size: 24px;
+        font-size: 2.4rem;
+    }
+
+    .entry-content h4 {
+        font-size: 22px;
+        font-size: 2.2rem;
+    }
+
+    .entry-content h5 {
+        font-size: 20px;
+        font-size: 2rem;
+    }
+
+    .entry-content h6 {
+        font-size: 18px;
+        font-size: 1.8rem;
+    }
+
+    .entry-content p,
+    .entry-content ul,
+    .entry-content ol  {
+        font-size: 18px;
+        font-size: 1.8rem;
+    }
+    
+    .entry-content blockquote p {
+        font-size: 22px;
+        font-size: 2.2rem;
+        line-height: 1.5em;
+    }
+}
+
+/* Meta */
+.category-list {
+    margin: 1.3em 0 1em;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-size: 1.6rem;
+}
+
+.category-list a {
+    color: #333;
+    color: hsl(0, 0%, 10%);
+}
+
+.category-list a:hover {
+    color: #000;
+    color: hsl(0, 0%, 0%);
+}
+
+.entry-meta {
+    margin-bottom: 2rem;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    font-size: 1.4rem;
+}
+
+.entry-meta a { font-weight: 600; }
+
+.entry-footer {
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-size: 1.6rem;
+    line-height: 2em;
+}
+
+.entry-footer ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.entry-footer li {
+    display: inline-block;
+    margin-right: 4rem;
+}
+
+.entry-footer a {
+    margin-left: .5rem;
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0804" class="movie">
+                <h3 class="movie-title">8.4 - Making post meta responsive</h3>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+@media screen and (min-width: 1320px){
+    .single .entry-meta {
+        width: 120px;
+        margin-left: -160px;
+        float: left;
+        text-align: right;
+    }
+    
+    .single .byline,
+    .single .posted-on {
+        display: block;
+        margin-bottom: 1em;
+    }
+}
+@media screen and (max-width: 1319px){
+    .posted-on:before {
+        content: ' on ';
+    }
+    .posted-on:after {
+        content: '.';
+    }
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0805" class="movie">
+                <h3 class="movie-title">8.5 - Styling blockquotes</h3>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+/* Blockquotes */
+blockquote {
+    padding: 1em 1.5em 0;
+    margin-bottom: 1em;
+    font-style: italic;
+    border-top: solid 1px hsl(0, 0%, 80%);
+    border-bottom: solid 1px hsl(0, 0%, 80%);
+}
+
+blockquote em { 
+    font-style: normal; 
+}
+
+blockquote cite {
+    display: block;
+    margin-top: 1em;
+    margin-left: 40%;
+    font-size: 18px;
+    font-size: 1.8rem;
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    line-height: 1.5em;
+    text-align: right;
+}
+
+blockquote.alignleft {
+    width: 50%;
+    float: left;
+    padding: 1em 0 0;
+    margin-right: 2em;
+}
+
+blockquote.alignright {
+    width: 50%;
+    float: right;
+    padding: 1em 0 0;
+    margin-left: 2em;
+}
+
+/* Blockquotes responsive */
+/* Optional rules that set blockquotes to full width on smaller screens */
+@media screen and (max-width: 780px) {
+    blockquote.alignleft,
+    blockquote.alignright { width: 40%; }
+}
+
+@media screen and (max-width:600px) {
+    blockquote.alignleft,
+    blockquote.alignright {
+        width: 100%;
+        padding: 1em 1.5em 0;   
+    }
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0806" class="movie">
+                <h3 class="movie-title">8.6 - Creating pull quotes and pull images</h3>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+/* Alignment responsive */
+@media screen and (min-width: 1320px) {
+    .alignleft {
+        margin-left: -160px; 
+    }
+}
+
+@media screen and (min-width: 1820px) {
+    .alignright { 
+        margin-right: -160px; 
+    }
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0807" class="movie">
+                <h3 class="movie-title">8.7 - Working with image captions</h3>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+.wp-caption {
+	margin-bottom: 1.5em;
+	max-width: 100%;
+}
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin: 0 auto;
+}
+.wp-caption-text {
+	text-align: center;
+}
+.wp-caption .wp-caption-text {
+    padding: 0.8075em 1em;
+    font-size: 14px;
+    font-size: 1.4rem;
+    font-family: 'Lato', sans-serif;
+    background: #e5e5e5;
+    background: hsl(0, 0%, 90%);
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0808" class="movie">
+                <h3 class="movie-title">8.8 - Working with image galleries</h3>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+.wp-caption .wp-caption-text ,
+.gallery-caption {
+    padding: 0.8075em 1em;
+    font-size: 14px;
+    font-size: 1.4rem;
+    font-family: 'Lato', sans-serif;
+    background: #e5e5e5;
+    background: hsl(0, 0%, 90%);
+}
+.site-main .gallery {
+	margin-bottom: 1.5em;
+}
+.site-main .gallery-item {
+    position: relative;    
+    max-width:100%;
+    float: left;
+    margin-right: 3.333333333%;
+    margin-bottom: 3rem;
+    background: #333;
+    overflow: hidden;
+}
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    max-height: 50%;
+    width: 100%;
+    padding: 6px 8px;
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #fff;
+    text-align: left;
+    background-color: hsla(0, 0%, 0%, .8);
+    opacity: 0;
+}
+.gallery-item:hover .gallery-caption { 
+    opacity: 1; 
+}
+.site-main .gallery a img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border: none;
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0809" class="movie">
+                <h3 class="movie-title">8.9 - Single post navigation</h3>
+                <h4>In inc/template-tags.php</h4>
+                <pre><code class="language-php">
+previous_post_link( '&lt;div class="nav-previous">&lt;div class="nav-indicator">' . _x( 'Previous Post:', 'Previous post', 'my-simone' ) . '&lt;/div>&lt;h1>%link&lt;/h1>&lt;/div>', '%title' );
+next_post_link(     '&lt;div class="nav-next">&lt;div class="nav-indicator">' . _x( 'Next Post:', 'Next post', 'my-simone' ) . '&lt;/div>&lt;h1>%link&lt;/h1>&lt;/div>', '%title' );
+                </code></pre>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+.site-main .comment-navigation,
+.site-main .paging-navigation,
+.site-main .post-navigation {
+        font-size: 18px;
+        font-size: 1.8rem;
+        font-family: 'Lato', sans-serif;
+        color: #000;
+        color: hsl(0, 0%, 0%);
+}
+.comment-navigation .nav-previous,
+.paging-navigation .nav-previous,
+.post-navigation .nav-previous {
+	width: 50%;
+        float: left;
+        padding-right: 15%;
+}
+.comment-navigation .nav-next,
+.paging-navigation .nav-next,
+.post-navigation .nav-next {
+        width: 50%;	
+        float: right;
+        padding-left: 15%;
+	text-align: right;
+}
+
+.nav-indicator { 
+    margin-bottom: 1em; 
+}
+
+.nav-previous h1,
+.nav-next h1 { 
+    font-weight: 900; 
+}
+                </code></pre>
+                <h4>In inc/template-tags.php</h4>
+                <pre><code class="language-php">
+&lt;nav class="navigation post-navigation" role="navigation">
+    &lt;div class="post-nav-box clear">
+        &lt;h1 class="screen-reader-text">&lt;?php _e( 'Post navigation', 'my-simone' ); ?>&lt;/h1>
+        &lt;div class="nav-links">
+            &lt;?php
+            previous_post_link( '&lt;div class="nav-previous">&lt;div class="nav-indicator">' . _x( 'Previous Post:', 'Previous post', 'my-simone' ) . '&lt;/div>&lt;h1>%link&lt;/h1>&lt;/div>', '%title' );
+            next_post_link(     '&lt;div class="nav-next">&lt;div class="nav-indicator">' . _x( 'Next Post:', 'Next post', 'my-simone' ) . '&lt;/div>&lt;h1>%link&lt;/h1>&lt;/div>', '%title' );
+            ?>
+        &lt;/div>&lt;!-- .nav-links -->
+    &lt;/div>&lt;!-- .post-nav-box -->
+&lt;/nav>&lt;!-- .navigation -->
+                </code></pre>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+.post-nav-box {
+    padding: 2em 0;
+    margin-bottom: 4em;
+    border-top: hsl(0, 0%, 80%) solid 1px;
+    border-bottom: hsl(0, 0%, 80%) solid 1px; 
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+        </section><!-- #chapter-08 -->
+    
+        <section id="chapter-09" class="chapter">
+            <h2 class="chapter-title">Chapter 09: Working with Comments</h1>
+            <article id="movie-0901" class="movie">
+                <h3 class="movie-title">9.1 - Working with the comments template</h3>
+                <h4>In comments.php</h4>
+                <pre><code class="language-php">
+&lt;?php
+    printf( _nx( 'One comment:', '%1$s comments:', get_comments_number(), 'comments title', 'my-simone' ), number_format_i18n( get_comments_number() ) );
+?>
+                </code></pre>
+                <h4>In comments.php</h4>
+                <pre><code class="language-php">
+&lt;nav id="comment-nav-below" class="comment-navigation clear" role="navigation">
+    &lt;h1 class="screen-reader-text">&lt;?php _e( 'Comment navigation', 'my-simone' ); ?>&lt;/h1>
+    &lt;div class="nav-previous">&lt;?php previous_comments_link( __( '&lt;i class="fa fa-arrow-circle-o-left">&lt;/i> Older Comments', 'my-simone' ) ); ?>&lt;/div>
+    &lt;div class="nav-next">&lt;?php next_comments_link( __( 'Newer Comments &lt;i class="fa fa-arrow-circle-o-right">&lt;/i>', 'my-simone' ) ); ?>&lt;/div>
+&lt;/nav>&lt;!-- #comment-nav-below -->
+                </code></pre>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+.comment-navigation {
+    padding: 1em 0;
+    margin: 3em 0;
+    border-top: hsl(0, 0%, 80%) solid 1px;
+    border-bottom: hsl(0, 0%, 80%) solid 1px;  
+}
+
+.comment-navigation i {
+    margin: 0 1em;
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0902" class="movie">
+                <h3 class="movie-title">9.2 - Using Gravatars in comments</h3>
+                <h4>In comments.php</h4>
+                <pre><code class="language-php">
+&lt;?php
+    wp_list_comments( array(
+        'style'      => 'ol',
+        'short_ping' => true,
+        'avatar_size'=> 50,
+    ) );
+?>
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0903" class="movie">
+                <h3 class="movie-title">9.3 - Styling Comments</h3>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+/*--------------------------------------------------------------
+10.3 Comments
+--------------------------------------------------------------*/
+.comments-title {
+    font-weight: 900;
+    font-size: 36px;
+    font-size: 3.6rem;
+}
+
+.comments-area > ol {
+    padding: 0;
+    margin: 2em 0;
+    list-style-type: none;
+}
+
+ol.children { list-style-type: none; }
+
+.comment-list ol { margin-left: 50px; }
+
+.comment-meta { margin-bottom: 1em; }
+
+.comment-author .avatar {
+    width: 50px;
+    display: block;
+    float: left;
+    margin-right: 20px;
+}
+
+.comment-author .fn {
+    font-weight: 900;
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    font-size: 2rem;
+}
+
+.comment-metadata {
+    font-size: 14px;
+    font-size:1.4rem;
+}
+
+.comment-content { font-size: 90%; }
+
+.comment-content,
+.reply { margin-left: 70px; }
+
+.comment-body {
+    padding-bottom: 2em;
+    margin-bottom: 2em;
+    border-bottom: solid hsl(0, 0%, 80%) 1px;
+}
+
+.comment-content a {
+	word-wrap: break-word;
+}
+
+.comment-content ol { margin-left: 1.5em; }
+
+.reply {
+    font-weight: 600;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    font-size: 1.4rem;
+}
+
+/* Comments responsive */
+@media screen and (max-width:600px) {    
+    .comment-list ol { margin-left: 0; }
+    
+    .comment-content ol { margin-left: 1.5em; }
+    
+    .comment-content,
+    .reply { margin-left: 0; }
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0904" class="movie">
+                <h3 class="movie-title">9.4 - Highlighting post author comments</h3>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+.bypostauthor > .comment-body {
+    position: relative;
+    padding: 1em;
+    margin-bottom: 2em;
+    background: hsl(0, 0%, 93%);
+    border: none;
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-0905" class="movie">
+                <h3 class="movie-title">9.5 - Styling the comment form</h3>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+.comment-reply-title {
+    margin-bottom: .5em;
+    font-weight: 900;
+    font-size: 30px;
+    font-size: 3rem;
+}
+
+.comment-form {
+    padding-bottom: 4rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-size: 1.6rem;
+}
+
+.comment-form textarea {
+    font-family: 'PT Serif', serif;
+    font-size: 18px;
+    font-size: 1.8rem;
+}
+
+.comment-form label { display: block; }
+
+.required { color: red; }
+
+.comment-awaiting-moderation { /* Green background color to make moderation seem less aggressive */
+    padding: .5rem 1rem;
+    margin: 1rem 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-size: 1.6rem;
+    color: #fff;
+    color: hsl(0, 0%, 100%);
+    background: #84bd68;
+    background: hsl(100, 39%, 57%);
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+        </section><!-- #chapter-09 -->
+    
+        <section id="chapter-10" class="chapter">
+            <h2 class="chapter-title">Chapter 10: Working with Featured Images</h1>
+            <article id="movie-1002" class="movie">
+                <h3 class="movie-title">10.2 - Defining Featured Image Sizes</h3>
+                <h4>In functions.php</h4>
+                <pre><code class="language-php">
+add_theme_support( 'post-thumbnails' );
+add_image_size('large-thumb', 1060, 650, true);
+add_image_size('index-thumb', 780, 250, true);
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-1004" class="movie">
+                <h3 class="movie-title">10.4 - Adding Featured Images to a template</h3>
+                <h4>In content-single.php</h4>
+                <pre><code class="language-php">
+&lt;?php 
+    if (has_post_thumbnail()) {
+        echo '&lt;div class="single-post-thumbnail clear">';
+        echo the_post_thumbnail('large-thumb');
+        echo '&lt;/div>';
+    }
+?>
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-1005" class="movie">
+                <h3 class="movie-title">10.5 - Styling the Featured Image</h3>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+/* Featured Images */
+
+.single-post-thumbnail { 
+    background: #b2b2b2 url(images/pattern.svg) repeat; 
+}
+
+.single-post-thumbnail img {
+    display: block;
+    margin: 0 auto;
+}
+                </code></pre>
+                <h4>Optional in content-single.php</h4>
+                <pre><code class="language-php">
+&lt;?php 
+if (has_post_thumbnail()) {
+    echo '&lt;div class="single-post-thumbnail clear">';
+    echo '&lt;div class="image-shifter">';
+    echo the_post_thumbnail('large-thumb');
+    echo '&lt;/div>';
+    echo '&lt;/div>';
+}
+?>
+                </code></pre>
+                <h4>Optional in layouts/content-sidebar.css</h4>
+                <pre><code class="language-css">
+@media screen and (min-width: 1820px) {
+    .image-shifter {
+        width: 1060px;
+        float: none;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 1540px) and (max-width: 1820px) {
+    .image-shifter { margin-right: 380px;}
+}
+
+@media screen and (min-width: 1440px) and (max-width: 1819px) {
+    .image-shifter {
+        width: 1060px; 
+        float: right;
+    }
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+        </section><!-- #chapter-10 -->
+    
+        <section id="chapter-11" class="chapter">
+            <h2 class="chapter-title">Chapter 11: Working with Index Templates</h1>
+            <article id="movie-1102" class="movie">
+                <h3 class="movie-title">11.2 - Customizing and styling index templates</h3>
+                <h4>In layouts/content-sidebar.css</h4>
+                <pre><code class="language-css">
+.site-content {
+    padding-bottom: 4em;
+    background: #b2b2b2 url(../images/pattern.svg) repeat;
+}
+                </code></pre>
+                <h4>In content.php</h4>
+                <pre><code class="language-php">
+&lt;div class="index-box">
+(...)
+&lt;/div>
+                </code></pre>
+                <h4>In layouts/content-sidebar.css</h4>
+                <pre><code class="language-css">
+.index-box {
+    max-width: 780px;
+    max-width: 78rem;
+    padding: 1em 0 2em;
+    margin: 0 auto 2em;
+    background: #fff;
+    background: hsl(0, 0%, 100%);
+}
+
+.index-box blockquote.alignleft,
+.index-box blockquote.alignright {
+    background: #fff;
+    background: hsl(0, 0%, 100%);
+    border: none;
+}
+
+@media screen and (min-width: 1820px) {
+    .index-box blockquote.alignright { padding-right: 2em; }
+}
+
+@media screen and (min-width: 1320px) {
+    .index-box blockquote.alignleft { padding-left: 2em; }
+}
+                </code></pre>
+                <h4>Completed content.php</h4>
+                <pre><code class="language-php">
+&lt;article id="post-&lt;?php the_ID(); ?>" &lt;?php post_class(); ?>>
+    &lt;div class="index-box">
+	&lt;header class="entry-header clear">
+            &lt;?php
+                /* translators: used between list items, there is a space after the comma */
+                $category_list = get_the_category_list( __( ', ', 'my-simone' ) );
+
+                if ( my_simone_categorized_blog() ) {
+                    echo '&lt;div class="category-list">' . $category_list . '&lt;/div>';
+                }
+            ?>
+		&lt;h1 class="entry-title">&lt;a href="&lt;?php the_permalink(); ?>" rel="bookmark">&lt;?php the_title(); ?>&lt;/a>&lt;/h1>
+
+		&lt;?php if ( 'post' == get_post_type() ) : ?>
+		&lt;div class="entry-meta">
+			&lt;?php my_simone_posted_on(); ?>
+                        &lt;?php 
+                        if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) { 
+                            echo '&lt;span class="comments-link">';
+                            comments_popup_link( __( 'Leave a comment', 'my-simone' ), __( '1 Comment', 'my-simone' ), __( '% Comments', 'my-simone' ) );
+                            echo '&lt;/span>';
+                        }
+                        ?>
+                        &lt;?php edit_post_link( __( ' | Edit', 'my-simone' ), '&lt;span class="edit-link">', '&lt;/span>' ); ?>
+		&lt;/div>&lt;!-- .entry-meta -->
+		&lt;?php endif; ?>
+	&lt;/header>&lt;!-- .entry-header -->
+
+	&lt;?php if ( is_search() ) : // Only display Excerpts for Search ?>
+	&lt;div class="entry-summary">
+		&lt;?php the_excerpt(); ?>
+	&lt;/div>&lt;!-- .entry-summary -->
+	&lt;?php else : ?>
+	&lt;div class="entry-content">
+		&lt;?php the_content( __( 'Continue reading &lt;span class="meta-nav">&rarr;&lt;/span>', 'my-simone' ) ); ?>
+		&lt;?php
+			wp_link_pages( array(
+				'before' => '&lt;div class="page-links">' . __( 'Pages:', 'my-simone' ),
+				'after'  => '&lt;/div>',
+			) );
+		?>
+	&lt;/div>&lt;!-- .entry-content -->
+	&lt;?php endif; ?>
+
+	&lt;footer class="entry-footer">
+		
+	&lt;/footer>&lt;!-- .entry-footer -->
+    &lt;/div>&lt;!-- .index-box -->
+&lt;/article>&lt;!-- #post-## -->
+                </code></pre>
+				<h4>In style.css</h4>
+				<pre><code class="language-css">
+.posted-on:before {
+    content: ' on ';
+}
+.posted-on:after {
+    content: '.';
+}
+
+@media screen and (min-width: 1320px) {
+    .single .posted-on:before,
+    .single .posted-on:after {
+        content: '';
+    }
+}
+				</code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-1103" class="movie">
+                <h3 class="movie-title">11.3 - Displaying excerpts or full content on index pages</h3>
+                <h4>In content.php</h4>
+                <pre><code class="language-php">
+&lt;div class="entry-content">
+    &lt;?php the_excerpt(); ?>
+&lt;/div>&lt;!-- .entry-content -->
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-1104" class="movie">
+                <h3 class="movie-title">11.4 - Adding a custom Read More link</h3>
+                <h4>In content.php</h4>
+                <pre><code class="language-php">
+&lt;footer class="entry-footer continue-reading">
+    &lt;?php echo '&lt;a href="' . get_permalink() . '" title="' . __('Continue Reading ', 'my-simone') . get_the_title() . '" rel="bookmark">Continue Reading&lt;i class="fa fa-arrow-circle-o-right">&lt;/i>&lt;/a>'; ?>
+&lt;/footer>&lt;!-- .entry-footer -->
+                </code></pre>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+/*--------------------------------------------------------------
+Index and Archive
+--------------------------------------------------------------*/
+
+.continue-reading {
+    margin: 0 4rem;
+    font-weight: 900;
+    font-size: 18px;
+    font-size: 1.8rem;
+}
+
+.continue-reading i { margin-left: .5em; }
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-1105" class="movie">
+                <h3 class="movie-title">11.5 - Adding featured images</h3>
+                <h4>In content.php</h4>
+                <pre><code class="language-php">
+&lt;?php
+if (has_post_thumbnail()) {
+    echo '&lt;div class="small-index-thumbnail clear">';
+    echo '&lt;a href="' . get_permalink() . '" title="' . __('Read ', 'my-simone') . get_the_title() . '" rel="bookmark">';
+    echo the_post_thumbnail('index-thumb');
+    echo '&lt;/a>';
+    echo '&lt;/div>';
+}
+?>
+                </code></pre>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+.small-index-thumbnail { 
+    margin-top: -1em;
+    margin-bottom: 1em;
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-1106" class="movie">
+                <h3 class="movie-title">11.6 - Creating custom pagination</h3>
+                <h4>In inc/template-tags.php</h4>
+                <pre><code class="language-php">
+function my_simone_paging_nav() {
+	// Don't print empty markup if there's only one page.
+	if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
+		return;
+	}
+
+	$paged        = get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
+	$pagenum_link = html_entity_decode( get_pagenum_link() );
+	$query_args   = array();
+	$url_parts    = explode( '?', $pagenum_link );
+
+	if ( isset( $url_parts[1] ) ) {
+		wp_parse_str( $url_parts[1], $query_args );
+	}
+
+	$pagenum_link = remove_query_arg( array_keys( $query_args ), $pagenum_link );
+	$pagenum_link = trailingslashit( $pagenum_link ) . '%_%';
+
+	$format  = $GLOBALS['wp_rewrite']->using_index_permalinks() && ! strpos( $pagenum_link, 'index.php' ) ? 'index.php/' : '';
+	$format .= $GLOBALS['wp_rewrite']->using_permalinks() ? user_trailingslashit( 'page/%#%', 'paged' ) : '?paged=%#%';
+
+	// Set up paginated links.
+	$links = paginate_links( array(
+		'base'     => $pagenum_link,
+		'format'   => $format,
+		'total'    => $GLOBALS['wp_query']->max_num_pages,
+		'current'  => $paged,
+		'mid_size' => 2,
+		'add_args' => array_map( 'urlencode', $query_args ),
+		'prev_text' => __( '&larr; Previous', 'my-simone' ),
+		'next_text' => __( 'Next &rarr;', 'my-simone' ),
+        'type'      => 'list',
+	) );
+
+	if ( $links ) :
+
+	?>
+	&lt;nav class="navigation paging-navigation" role="navigation">
+		&lt;h1 class="screen-reader-text">&lt;?php _e( 'Posts navigation', 'my-simone' ); ?>&lt;/h1>
+			&lt;?php echo $links; ?>
+	&lt;/nav>&lt;!-- .navigation -->
+	&lt;?php
+	endif;
+}
+                </code></pre>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+.paging-navigation ul {
+    margin: 0;
+}
+
+.paging-navigation li { display: inline; }
+
+a.page-numbers,
+span.page-numbers {
+     padding: .3em .7em;
+     color: #333;
+     color: hsl(0, 0%, 20%);
+}
+
+a:hover.page-numbers {
+    color: #000;
+    color: hsl(0, 0%, 0%);
+}
+
+.paging-navigation .current {
+    font-weight: bold;
+    color: #000;
+    color: hsl(0, 0%, 0%);
+}
+                </code></pre>
+                <h4>In layouts/content-sidebar.css</h4>
+                <pre><code class="language-css">
+.paging-navigation {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-bottom: 2em;
+    list-style-type: none;
+    background: #fff;
+}           
+                </code></pre>
+            </article><!-- .movie -->
+
+            <article id="movie-1107" class="movie">
+                <h3 class="movie-title">11.7 - Highlighting Sticky Posts</h3>
+                <h4>In content.php</h4>
+                <pre><code class="language-php">
+&lt;?php
+// Display a thumb tack in the top right hand corner if this post is sticky
+if (is_sticky()) {
+    echo '&lt;i class="fa fa-thumb-tack sticky-post">&lt;/i>';
+}
+?>
+                </code></pre>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+.sticky-post {
+    position: absolute;
+    top: 1rem;
+    right: 3rem;
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-1108" class="movie">
+                <h3 class="movie-title">11.8 - Creating custom Post Format templates</h3>
+                <h4>In content-aside.php</h4>
+                <pre><code class="language-php">
+&lt;article id="post-&lt;?php the_ID(); ?>" &lt;?php post_class(); ?>>
+    &lt;div class="index-box">
+
+	&lt;div class="entry-content">
+		&lt;?php the_content(); ?>
+	&lt;/div>&lt;!-- .entry-content -->
+
+	&lt;footer class="entry-footer">
+            &lt;?php my_simone_posted_on(); ?>
+                        &lt;?php edit_post_link( __( ' | Edit', 'my-simone' ), '&lt;span class="edit-link">', '&lt;/span>' ); ?>
+	&lt;/footer>&lt;!-- .entry-footer -->
+    &lt;/div>
+&lt;/article>&lt;!-- #post-## -->
+                </code></pre>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+/*--------------------------------------------------------------
+10.2 Asides
+--------------------------------------------------------------*/
+.format-aside .entry-content {
+    margin-top: 1em;
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-1109" class="movie">
+                <h3 class="movie-title">11.9 - Creating a custom display for the most recent post</h3>
+                <h4>In content.php</h4>
+                <pre><code class="language-php">
+&lt;?php 
+if( $wp_query->current_post == 0 && !is_paged() && is_front_page() ) { 
+    echo '&lt;div class="entry-content">';
+    the_content( __( '', 'my-simone' ) );
+    echo '&lt;/div>';
+    echo '&lt;footer class="entry-footer continue-reading">';
+    echo '&lt;a href="' . get_permalink() . '" title="' . __('Read ', 'my-simone') . get_the_title() . '" rel="bookmark">Read the article&lt;i class="fa fa-arrow-circle-o-right">&lt;/i>&lt;/a>'; 
+    echo '&lt;/footer>&lt;!-- .entry-footer -->';
+} else { ?>
+    &lt;div class="entry-content">
+    &lt;?php the_excerpt(); ?>
+    &lt;/div>&lt;!-- .entry-content -->
+    &lt;footer class="entry-footer continue-reading">
+    &lt;?php echo '&lt;a href="' . get_permalink() . '" title="' . __('Continue Reading ', 'my-simone') . get_the_title() . '" rel="bookmark">Continue Reading&lt;i class="fa fa-arrow-circle-o-right">&lt;/i>&lt;/a>'; ?>
+    &lt;/footer>&lt;!-- .entry-footer -->
+&lt;?php } ?>
+                </code></pre>
+                <h4>In content.php</h4>
+                <pre><code class="language-php">
+&lt;?php 
+if( $wp_query->current_post == 0 && !is_paged() && is_front_page() ) { // Custom template for the first post on the front page
+    if (has_post_thumbnail()) {
+        echo '&lt;div class="front-index-thumbnail clear">';
+        echo '&lt;div class="image-shifter">';
+        echo '&lt;a href="' . get_permalink() . '" title="' . __('Read ', 'my-simone') . get_the_title() . '" rel="bookmark">';
+        echo the_post_thumbnail('large-thumb');
+        echo '&lt;/a>';
+        echo '&lt;/div>';
+        echo '&lt;/div>';
+    } 
+    echo '&lt;div class="index-box';
+    if (has_post_thumbnail()) { echo ' has-thumbnail'; };
+    echo '">';
+} else {
+    echo '&lt;div class="index-box">';
+    if (has_post_thumbnail()) {
+        echo '&lt;div class="small-index-thumbnail clear">';
+        echo '&lt;a href="' . get_permalink() . '" title="' . __('Read ', 'my-simone') . get_the_title() . '" rel="bookmark">';
+        echo the_post_thumbnail('index-thumb');
+        echo '&lt;/a>';
+        echo '&lt;/div>';
+    }
+}
+?>
+                </code></pre>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+.front-index-thumbnail {
+    margin-bottom: -3.2em;
+}
+
+@media screen and (max-width: 779px){
+    .front-index-thumbnail {
+        margin-bottom: 0;
+    }
+}
+.single-post-thumbnail img,
+.front-index-thumbnail img {
+    display: block;
+    margin: 0 auto;
+}
+
+.has-thumbnail {
+    position: relative;
+    margin-top: -8em;
+}
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-1111" class="movie">
+                <h3 class="movie-title">11.11 - Working with archive.php</h3>
+                <h4>In layouts/content-sidebar.css</h4>
+                <pre><code class="language-css">
+.page-header,
+.paging-navigation {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-bottom: 2em;
+    list-style-type: none;
+    background: #fff;
+}
+
+.page-header {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+                </code></pre>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+.taxonomy-description {
+    padding-top: 2rem;
+    margin: 2rem 0;
+    font-family: 'Lato', sans-serif;
+    font-style: italic;
+    border-top: 1px solid hsl(0, 0%, 75%);
+    border-bottom: 1px solid hsl(0, 0%, 75%);
+}
+                </code></pre>
+                <h4>In archive.php</h4>
+                <pre><code class="language-php">
+&lt;?php
+if ( is_category() ) :
+    printf( __( 'Posts in the ', 'my-simone' ) );
+    echo '&lt;em>';
+    single_cat_title();
+    echo '&lt;/em> ' . __('category', 'my-simone') . ':';
+
+elseif ( is_tag() ) :
+    printf( __( 'Posts with the ', 'my-simone' ) );
+    echo '&lt;em>';
+    single_tag_title();
+    echo '&lt;/em> ' . __('tag', 'my-simone') . ':';
+
+elseif ( is_author() ) :
+    printf( __( 'Author: %s', 'my-simone' ), '&lt;span class="vcard">' . get_the_author() . '&lt;/span>' );
+
+elseif ( is_day() ) :
+    printf( __( 'Posts from %s', 'my-simone' ), '&lt;span>' . get_the_date() . '&lt;/span>' );
+
+elseif ( is_month() ) :
+    printf( __( 'Posts from %s', 'my-simone' ), '&lt;span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'my-simone' ) ) . '&lt;/span>' );
+
+elseif ( is_year() ) :
+    printf( __( 'Posts from %s', 'my-simone' ), '&lt;span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'my-simone' ) ) . '&lt;/span>' );
+
+elseif ( is_tax( 'post_format', 'post-format-aside' ) ) :
+    _e( 'Asides', 'my-simone' );
+
+else :
+    _e( 'Archives', 'my-simone' );
+
+endif;
+?>
+                </code></pre>
+            </article><!-- .movie -->
+
+            <article id="movie-1112" class="movie">
+                <h3 class="movie-title">11.12 - Customizing the search results and 404 templates</h3>
+                <h4>In content-none.php</h4>
+                <pre><code class="language-php">
+&lt;?php
+/**
+ * The template part for displaying a message that posts cannot be found.
+ *
+ * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package my-simone
+ */
+?>
+
+&lt;section class="&lt;?php if ( is_404() ) { echo 'error-404'; } else { echo 'no-results'; } ?> not-found">
+    &lt;div class="index-box">
+	&lt;header class="entry-header">
+		&lt;h1 class="entry-title">
+                    &lt;?php 
+                    if ( is_404() ) { _e( 'Page not available', 'my-simone' ); }
+                    else if ( is_search() ) { printf( __( 'Nothing found for &lt;em>', 'my-simone') . get_search_query() . '&lt;/em>' ); }
+                    else { _e( 'Nothing Found', 'my-simone' );}
+                    ?>
+                &lt;/h1>
+	&lt;/header><!-- .page-header -->
+
+	&lt;div class="entry-content">
+		&lt;?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
+
+			&lt;p>&lt;?php printf( __( 'Ready to publish your first post? &lt;a href="%1$s">Get started here&lt;/a>.', 'my-simone' ), esc_url( admin_url( 'post-new.php' ) ) ); ?>&lt;/p>
+                        
+                &lt;?php elseif ( is_404() ) : ?>
+                        
+                        &lt;p>&lt;?php _e( 'You seem to be lost. To find what you are looking for check out the most recent articles below or try a search:', 'my-simone' ); ?>&lt;/p>
+                        &lt;?php get_search_form(); ?>
+                        
+		&lt;?php elseif ( is_search() ) : ?>
+
+			&lt;p>&lt;?php _e( 'Nothing matched your search terms. Check out the most recent articles below or try searching for something else:', 'my-simone' ); ?>&lt;/p>
+			&lt;?php get_search_form(); ?>
+
+		&lt;?php else : ?>
+
+			&lt;p>&lt;?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'my-simone' ); ?>&lt;/p>
+			&lt;?php get_search_form(); ?>
+
+		&lt;?php endif; ?>
+	&lt;/div>&lt;!-- .entry-content -->
+    &lt;/div>&lt;!-- .index-box -->
+    
+    &lt;?php
+    if ( is_404() || is_search() ) {
+        
+        ?>
+    &lt;header class="page-header">&lt;h1 class="page-title">Most recent posts:&lt;/h1>&lt;/header>
+    &lt;?php
+        // Get the 6 latest posts
+        $args = array(
+            'posts_per_page' => 6
+        );
+
+        $latest_posts_query = new WP_Query( $args );
+
+        // The Loop
+        if ( $latest_posts_query->have_posts() ) {
+                while ( $latest_posts_query->have_posts() ) {
+
+                    $latest_posts_query->the_post();
+                    // Get the standard index page content
+                    get_template_part( 'content', get_post_format() );
+
+                }
+        }
+        /* Restore original Post Data */
+        wp_reset_postdata();
+
+    }
+    ?>
+    
+&lt;/section>&lt;!-- .no-results -->
+                </code></pre>
+                <h4>In 404.php</h4>
+                <pre><code class="language-php">
+&lt;?php get_template_part( 'content', 'none' ); ?>
+                </code></pre>
+            </article><!-- .movie -->
+            
+        </section><!-- #chapter-11 -->
+    
+        <section id="chapter-12" class="chapter">
+            <h2 class="chapter-title">Chapter 12: Working with Static Pages</h1>
+            <article id="movie-1201" class="movie">
+                <h3 class="movie-title">12.1 - Styling pages</h3>
+                <h4>In style.css</h4>
+                <pre><code class="language-css">
+.page .entry-title {
+    margin-top: .7em;
+}
+                </code></pre>
+                <h4>In content-page.php</h4>
+                <pre><code class="language-php">
+&lt;?php 
+if (has_post_thumbnail()) {
+    echo '&lt;div class="single-post-thumbnail clear">';
+    echo '&lt;div class="image-shifter">';
+    echo the_post_thumbnail('large-thumb');
+    echo '&lt;/div>';
+    echo '&lt;/div>';
+}
+?>
+                </code></pre>
+            </article><!-- .movie -->
+            
+            <article id="movie-1202" class="movie">
+                <h3 class="movie-title">12.2 - Creating Custom Page Templates</h3>
+                <h4>In page-templates/page-nosidebar.php</h4>
+                <pre><code class="language-php">
+/**
+ * Template Name: Page with no sidebar
+ */
+                </code></pre>
+                <h4>In layouts/no-sidebar.css</h4>
+                <pre><code class="language-css">
+/*
+Theme Name: my-simone
+Layout: No sidebar
+*/
+
+.page .site-content { 
+    background: #fff; 
+    background: hsl(0, 0%, 100%);
+}
+
+.site-footer {
+    clear: both;
+    width: 100%;
+}
+
+.entry-header,
+.page-header,
+.entry-content,
+.entry-footer,
+.tag-links,
+.post-navigation,
+.comments-area,
+.paging-navigation {
+    position: relative;
+    max-width: 780px;
+    max-width: 78rem;
+    padding: 0 4rem;
+    margin: 0 auto;
+}
+
+.page-header,
+.paging-navigation {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-bottom: 2em;
+    list-style-type: none;
+    background: #fff;
+}
+
+.page-header {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+                </code></pre>
+                <h4>In functions.php</h4>
+                <pre><code class="language-php">
+if (is_page_template('page-templates/page-nosidebar.php')) {
+    wp_enqueue_style( 'my-sinome-layout-style' , get_template_directory_uri() . '/layouts/no-sidebar.css');
+} else {
+    wp_enqueue_style( 'my-sinome-layout-style' , get_template_directory_uri() . '/layouts/content-sidebar.css');
+}
+                </code></pre>
+            </article><!-- .movie -->
+        </section><!-- #chapter-12 -->
+            
+        <section id="chapter-13" class="chapter">
+            <h2 class="chapter-title">Chapter 13: Back End Customization</h1>   
+            <article id="movie-1301" class="movie">
+                <h3 class="movie-title">13.1 - Adding Editor Styles to Match Front-End Styles</h3>
+                <h4>In inc/editor-style.css</h4>
+                <pre><code class="language-css">
+/*
+Theme Name: Simone
+Description: Used to style the content editor in posts and pages.
+*/
+
+
+/* =Body
+----------------------------------------------- */
+html .mceContentBody {
+	max-width: 700px;
+}
+
+body {
+	color: #404040;
+	font-family: 'PT Serif', sans-serif;
+	font-size: 20px;
+	line-height: 1.5;
+}
+
+/* =Base elements
+----------------------------------------------- */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+	color: #000;
+        color: hsl(0, 0%, 0%);
+}
+
+a:visited {
+	color: #333;
+        color: hsl(0, 0%, 20%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	clear: right;
+        font-family: 'Lato', sans-serif;
+        font-weight: 900;
+        color: #000;
+        color: hsl(0, 0%, 0%);
+        margin-bottom: .4em;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 28px;
+}
+
+h4 {
+    font-size: 26px;
+}
+
+h5 {
+    font-size: 24px;
+}
+
+h6 {
+    font-size: 22px;
+}
+
+p,
+ul,
+ol {
+    font-size: 20px;
+    line-height: 1.6em;
+}
+
+/* =Blockquotes
+----------------------------------------------- */
+blockquote p {
+        font-size: 28px;
+        line-height: 1.5em;
+}
+
+blockquote {
+	padding: 1em 1.5em 0;
+        margin-bottom: 1em;
+        font-style: italic;
+        border-top: solid 1px hsl(0, 0%, 80%);
+        border-bottom: solid 1px hsl(0, 0%, 80%);
+}
+
+blockquote.alignleft {
+    float: left;
+    width: 50%;
+    padding: 1em 0 0;
+    margin-right: 1.5em;
+}
+
+blockquote.alignright {
+    float: right;
+    width: 50%;
+    padding: 1em 0 0;
+    margin-left: 1.5em;
+}
+
+blockquote em {
+        font-style: normal;
+}
+
+blockquote cite {
+    display: block;
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    text-align: right;
+    font-size: 18px;
+    line-height: 1.5em;
+    margin-top: 1em;
+    margin-left: 40%;
+}
+
+blockquote.alignleft cite {
+    text-align: left;
+    margin-left: 0;
+    margin-right: 40%;
+}
+
+
+/* =Images
+ ----------------------------------------------- */
+
+.wp-caption {
+	margin-bottom: 1.5em;
+	max-width: 100%;
+        border: none;
+        text-align: center;
+        background-color: #fff;
+        padding-top: 0;
+        margin: 10px 0;
+}
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin: 0 auto;
+}
+.wp-caption-text {
+	text-align: center;
+}
+
+.gallery-caption,
+.wp-caption .wp-caption-text,
+.wp-caption-dd {
+	padding: 0.8075em 1em;
+        background: #e5e5e5;
+        background: hsl(0, 0%, 90%);
+        border-left: #fff solid 5px;
+        border-right: #fff solid 5px;
+        font-family: 'Lato', sans-serif;
+        font-size: 14px;
+}
+
+/* Due to HTML5 galleries being activated defaul gallery styling does not apply.*/
+
+.gallery {
+        margin: auto 0;
+        padding: 6px;
+        width: 712px;
+}
+
+.gallery-item:hover .gallery-caption {
+	opacity: 1;
+}
+
+.gallery img {
+        display: block;
+}
+.gallery a img {
+	border: none;
+        height: auto;
+        max-width: 100%;
+        display: block;
+        margin: 0 auto;
+}
+
+.gallery-item {
+        float: left;
+        width: auto!important;
+        margin-right: 3.333333333%!important;
+        margin-bottom: 30px!important;
+        padding: 0!important;
+        background: #333;
+        overflow: hidden;
+        position: relative;
+}
+
+.gallery-caption {
+	background-color: hsla(0, 0%, 0%, .8);
+	color: #fff;
+	font-size: 12px;
+	line-height: 1.5;
+	margin: 0!important;
+        border: none;
+	max-height: 50%;
+	opacity: 0;
+	padding: 6px 8px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	text-align: left;
+	width: 100%;
+}
+
+/* =Alignment
+----------------------------------------------- */
+
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+.aligncenter {
+	clear: right;
+	display: block;
+	margin: 0 auto;
+}
+
+                </code></pre>
+                <h4>In functions.php</h4>
+                <pre><code class="language-php">
+// This theme styles the visual editor to resemble the theme style.
+$font_url = 'http://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,900,900italic|PT+Serif:400,700,400italic,700italic';
+add_editor_style( array( 'inc/editor-style.css', str_replace( ',', '%2C', $font_url ) ) );
+                </code></pre>
+            </article><!-- .movie -->
+            
+        </section><!-- #chapter-12 -->
+    </div><!-- #main -->
+
+    <footer class="footer">
+  
+    </footer>
+</div>
+</body>
+</html>

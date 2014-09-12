@@ -4,27 +4,26 @@
 class Main extends EventDispatcher
 
 	constructor:()->
-		@w = window.innerWidth
-		@h = window.innerHeight
+		var PI2 = Math.PI * 2;
 
-		@turnSpeed = 2*Math.PI/1600
-		@fLen = 320
-		@turnAngle = 0
-		@sphereRad = 280
-		@sphereCenterZ = - @sphereRad*0.3
-		@cx = @w*0.5
-		@cy = @h*0.5
-		@zMax = @fLen-2
+			var programFill = function ( context ) {
 
-		assetsToLoader = [ "assets/test3.json"];
+				context.beginPath();
+				context.arc( 0, 0, 0.5, 0, PI2, true );
+				context.fill();
 
-		loader = new PIXI.AssetLoader(assetsToLoader);
+			}
 
+			var programStroke = function ( context ) {
 
-		@countItem = 0
+				context.lineWidth = 0.025;
+				context.beginPath();
+				context.arc( 0, 0, 0.5, 0, PI2, true );
+				context.stroke();
 
-		loader.onComplete = @onAssetsLoaded
-		loader.load()
+			}
+
+			var mouse = { x: 0, y: 0 }, INTERSECTED;
 
 	onAssetsLoaded:()=>
 

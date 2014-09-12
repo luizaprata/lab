@@ -6,7 +6,7 @@
   --------------------------------------------
   */
 
-  var EventDispatcher, EventUtils, Floating, Main, get, has3d, init, set,
+  var EventDispatcher, EventUtils, Main, init,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
     __hasProp = {}.hasOwnProperty,
@@ -150,312 +150,7 @@
   EventUtils.init();
 
   /* --------------------------------------------
-       Begin Workarounds.coffee
-  --------------------------------------------
-  */
-
-
-  get = function(p_scope, p_props) {
-    var getter, name;
-    if (Debug.checkBrowser('IE 9') >= 0) {
-      for (name in p_props) {
-        getter = p_props[name];
-        Object.defineProperty(p_scope.prototype, name, {
-          get: getter,
-          configurable: true,
-          enumerable: true
-        });
-      }
-    }
-    return null;
-  };
-
-  set = function(p_scope, p_props) {
-    var name, setter;
-    if (Debug.checkBrowser('IE 9') >= 0) {
-      for (name in p_props) {
-        setter = p_props[name];
-        Object.defineProperty(p_scope.prototype, name, {
-          set: setter,
-          configurable: true,
-          enumerable: true
-        });
-      }
-    }
-    return null;
-  };
-
-  if (!Object.defineProperty) {
-    Object.defineProperties = function(obj, properties) {
-      var convertToDescriptor, descs, i, keys;
-      convertToDescriptor = function(desc) {
-        var d, g, hasProperty, isCallable, s;
-        hasProperty = function(obj, prop) {
-          return Object.prototype.hasOwnProperty.call(obj, prop);
-        };
-        isCallable = function(v) {
-          return typeof v === "function";
-        };
-        if (typeof desc !== "object" || desc === null) {
-          throw new TypeError("bad desc");
-        }
-        d = {};
-        if (hasProperty(desc, "enumerable")) {
-          d.enumerable = !!obj.enumerable;
-        }
-        if (hasProperty(desc, "configurable")) {
-          d.configurable = !!obj.configurable;
-        }
-        if (hasProperty(desc, "value")) {
-          d.value = obj.value;
-        }
-        if (hasProperty(desc, "writable")) {
-          d.writable = !!desc.writable;
-        }
-        if (hasProperty(desc, "get")) {
-          g = desc.get;
-          if (!isCallable(g) && g !== "undefined") {
-            throw new TypeError("bad get");
-          }
-          d.get = g;
-        }
-        if (hasProperty(desc, "set")) {
-          s = desc.set;
-          if (!isCallable(s) && s !== "undefined") {
-            throw new TypeError("bad set");
-          }
-          d.set = s;
-        }
-        if (("get" in d || "set" in d) && ("value" in d || "writable" in d)) {
-          throw new TypeError("identity-confused descriptor");
-        }
-        return d;
-      };
-      if (typeof obj !== "object" || obj === null) {
-        throw new TypeError("bad obj");
-      }
-      properties = Object(properties);
-      keys = Object.keys(properties);
-      descs = [];
-      i = 0;
-      while (i < keys.length) {
-        descs.push([keys[i], convertToDescriptor(properties[keys[i]])]);
-        i++;
-      }
-      i = 0;
-      while (i < descs.length) {
-        Object.defineProperty(obj, descs[i][0], descs[i][1]);
-        i++;
-      }
-      return obj;
-    };
-  }
-
-  Object.keys = Object.keys || function(p_obj) {
-    var name, result;
-    result = [];
-    for (name in p_obj) {
-      if (p_obj.hasOwnProperty(name)) {
-        result.push(name);
-      }
-    }
-    return result;
-  };
-
-  if (!("bind" in Function.prototype)) {
-    Function.prototype.bind = function(owner) {
-      var args, that;
-      that = this;
-      if (arguments.length <= 1) {
-        return function() {
-          return that.apply(owner, arguments);
-        };
-      } else {
-        args = Array.prototype.slice.call(arguments, 1);
-        return function() {
-          return that.apply(owner, (arguments.length === 0 ? args : args.concat(Array.prototype.slice.call(arguments))));
-        };
-      }
-    };
-  }
-
-  if (!("trim" in String.prototype)) {
-    String.prototype.trim = function() {
-      return this.replace(/^\s+/, "").replace(/\s+$/, "");
-    };
-  }
-
-  if (!("indexOf" in Array.prototype)) {
-    Array.prototype.indexOf = function(find, i) {
-      var n;
-      if (i === undefined) {
-        i = 0;
-      }
-      if (i < 0) {
-        i += this.length;
-      }
-      if (i < 0) {
-        i = 0;
-      }
-      n = this.length;
-      while (i < n) {
-        if (i in this && this[i] === find) {
-          return i;
-        }
-        i++;
-      }
-      return -1;
-    };
-  }
-
-  if (!("lastIndexOf" in Array.prototype)) {
-    Array.prototype.lastIndexOf = function(find, i) {
-      if (i === undefined) {
-        i = this.length - 1;
-      }
-      if (i < 0) {
-        i += this.length;
-      }
-      if (i > this.length - 1) {
-        i = this.length - 1;
-      }
-      i++;
-      while (i-- > 0) {
-        if (i in this && this[i] === find) {
-          return i;
-        }
-      }
-      return -1;
-    };
-  }
-
-  if (!("forEach" in Array.prototype)) {
-    Array.prototype.forEach = function(action, that) {
-      var i, n, _results;
-      i = 0;
-      n = this.length;
-      _results = [];
-      while (i < n) {
-        if (i in this) {
-          action.call(that, this[i], i, this);
-        }
-        _results.push(i++);
-      }
-      return _results;
-    };
-  }
-
-  if (!("map" in Array.prototype)) {
-    Array.prototype.map = function(mapper, that) {
-      var i, n, other;
-      other = new Array(this.length);
-      i = 0;
-      n = this.length;
-      while (i < n) {
-        if (i in this) {
-          other[i] = mapper.call(that, this[i], i, this);
-        }
-        i++;
-      }
-      return other;
-    };
-  }
-
-  if (!("filter" in Array.prototype)) {
-    Array.prototype.filter = function(filter, that) {
-      var i, n, other, v;
-      other = [];
-      v = void 0;
-      i = 0;
-      n = this.length;
-      while (i < n) {
-        if (i in this && filter.call(that, v = this[i], i, this)) {
-          other.push(v);
-        }
-        i++;
-      }
-      return other;
-    };
-  }
-
-  if (!("every" in Array.prototype)) {
-    Array.prototype.every = function(tester, that) {
-      var i, n;
-      i = 0;
-      n = this.length;
-      while (i < n) {
-        if (i in this && !tester.call(that, this[i], i, this)) {
-          return false;
-        }
-        i++;
-      }
-      return true;
-    };
-  }
-
-  if (!("some" in Array.prototype)) {
-    Array.prototype.some = function(tester, that) {
-      var i, n;
-      i = 0;
-      n = this.length;
-      while (i < n) {
-        if (i in this && tester.call(that, this[i], i, this)) {
-          return true;
-        }
-        i++;
-      }
-      return false;
-    };
-  }
-
-  has3d = function() {
-    var el, t, transforms;
-    el = document.createElement("p");
-    has3d = void 0;
-    transforms = {
-      webkitTransform: "-webkit-transform",
-      OTransform: "-o-transform",
-      msTransform: "-ms-transform",
-      MozTransform: "-moz-transform",
-      transform: "transform"
-    };
-    document.body.appendChild(el);
-    for (t in transforms) {
-      if (el.style[t] !== undefined) {
-        el.style[t] = "translate3d(1px,1px,1px)";
-        has3d = window.getComputedStyle(el).getPropertyValue(transforms[t]);
-      }
-    }
-    document.body.removeChild(el);
-    return has3d !== undefined && has3d.length > 0 && has3d !== "none";
-  };
-
-  /* --------------------------------------------
-       Begin Floating.coffee
-  --------------------------------------------
-  */
-
-
-  Floating = (function(_super) {
-    __extends(Floating, _super);
-
-    Floating.shape = null;
-
-    function Floating() {
-      this.initialize();
-      this.shape = new createjs.Shape();
-      this.shape.graphics.beginFill("#" + Math.random().toString(16).slice(2, 8)).drawCircle(0, 0, 10);
-      this.addChild(this.shape);
-      this.x = Math.random() * 800;
-      this.y = Math.random() * 800;
-    }
-
-    return Floating;
-
-  })(createjs.Container);
-
-  /* --------------------------------------------
-       Begin ContainerTest.coffee
+       Begin Main.coffee
   --------------------------------------------
   */
 
@@ -467,55 +162,98 @@
 
     Main.prototype.stage = null;
 
+    Main.prototype.canvasContext = null;
+
+    Main.prototype.update = false;
+
+    Main.prototype.items = null;
+
+    Main.prototype.frameCount = 0;
+
+    Main.prototype.container = null;
+
+    Main.prototype.image = null;
+
+    Main.prototype.linha = 0;
+
     function Main() {
       this.tick = __bind(this.tick, this);
-      this.onStageMouseMove = __bind(this.onStageMouseMove, this);
-      var template, x, _i;
+      this.addNewItems = __bind(this.addNewItems, this);
+      this.handleImageLoad = __bind(this.handleImageLoad, this);
+      this.clickBtnADD = __bind(this.clickBtnADD, this);
       this.canvas = $('.sketch')[0];
       this.canvas.width = window.innerWidth;
       this.canvas.height = window.innerHeight;
       this.stage = new createjs.Stage(this.canvas);
-      this.animContainer = new createjs.Container();
-      this.stage.addChild(this.animContainer);
-      this.items = [];
-      for (x = _i = 0; _i < 100; x = ++_i) {
-        template = new Floating();
-        this.animContainer.addChild(template);
-        this.items.push(template);
-      }
+      this.canvasContext = this.canvas.getContext('2d');
+      this.image = new Image();
+      this.image.src = 'assets/items.png';
+      this.image.onload = this.handleImageLoad;
+      createjs.Ticker.setFPS(60);
       createjs.Ticker.addEventListener('tick', this.tick);
-      this.stage.addEventListener("stagemousemove", this.onStageMouseMove);
+      $("input[name='btn1']").on('click', this.clickBtnADD);
       return false;
     }
 
-    Main.prototype.onStageMouseMove = function(e) {
-      var deltaX, deltaY, dist, item, maxDist, rad, _i, _len, _ref, _results;
-      this.rx = e.stageX;
-      this.ry = e.stageY;
-      maxDist = 800;
-      _ref = this.items;
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        item = _ref[_i];
-        deltaX = this.rx - item.x;
-        deltaY = this.ry - item.y;
-        dist = deltaX * deltaX + deltaY * deltaY;
-        if (dist < (maxDist * maxDist)) {
-          dist = Math.sqrt(dist);
-          rad = Math.atan2(deltaY, deltaX);
-          dist = 5 * (maxDist / dist);
-          console.log(maxDist / dist);
-          item.x = item.x - Math.cos(rad) * dist;
-          _results.push(item.y = item.y - Math.sin(rad) * dist);
-        } else {
-          _results.push(void 0);
+    Main.prototype.clickBtnADD = function(e) {
+      this.addNewItems();
+      return false;
+    };
+
+    Main.prototype.handleImageLoad = function(e) {
+      this.spriteList = [];
+      this.container = new createjs.Container();
+      this.stage.addChild(this.container);
+      this.ss = new createjs.SpriteSheet({
+        images: [this.image],
+        frames: {
+          width: 16,
+          height: 16,
+          regX: 8,
+          regY: 8
+        },
+        animations: {
+          walk: [0, 1, true]
+        }
+      });
+      this.sprite = new createjs.Sprite(this.ss, "walk");
+      this.addNewItems(1000);
+      return false;
+    };
+
+    Main.prototype.addNewItems = function(p) {
+      var h, i, phi, sphereRad, theta, w, x0, y0, _i;
+      if (p == null) {
+        p = 1000;
+      }
+      w = this.canvas.width / 2;
+      h = this.canvas.height / 2;
+      sphereRad = 280;
+      for (i = _i = 0; 0 <= p ? _i < p : _i > p; i = 0 <= p ? ++_i : --_i) {
+        this.sprite.name = "item" + i;
+        this.sprite.speed = 2;
+        this.sprite.vX = this.sprite.speed;
+        this.sprite.vY = 0;
+        theta = Math.random() * 2 * Math.PI;
+        phi = Math.acos(Math.random() * 2 - 1);
+        x0 = sphereRad * Math.sin(phi) * Math.cos(theta);
+        y0 = sphereRad * Math.sin(phi) * Math.sin(theta);
+        this.sprite.x = w + x0;
+        this.sprite.y = h + y0;
+        this.sprite.currentAnimationFrame = (Math.random() * 3) >> 0;
+        this.container.addChild(this.sprite);
+        this.sprite.gotoAndPlay("walkRt");
+        console.log(this.ss.getNumFrames("walkRt"), this.sprite.currentAnimationFrame);
+        this.spriteList.push(this.sprite);
+        if (i < p - 1) {
+          this.sprite = this.sprite.clone();
         }
       }
-      return _results;
+      return false;
     };
 
     Main.prototype.tick = function(e) {
-      this.stage.update();
+      this.stage.update(e);
       return false;
     };
 

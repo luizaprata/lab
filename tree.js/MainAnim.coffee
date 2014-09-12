@@ -32,8 +32,8 @@ class Main extends EventDispatcher
 		@stage = new PIXI.Stage(0xFFFFFF);
 
 		@texture = new PIXI.Texture.fromImage('assets/bg.jpg')
-		bg = new PIXI.Sprite(@texture)
-		@stage.addChild(bg)
+		@bg = new PIXI.Sprite(@texture)
+		@stage.addChild(@bg)
 
 
 		@renderer = new PIXI.CanvasRenderer(@w, @h, null, true, true)
@@ -113,7 +113,6 @@ class Main extends EventDispatcher
 		@turnAngle = (@turnAngle + @turnSpeed) % (2*Math.PI);
 		sinAngle = Math.sin(@turnAngle)
 		cosAngle = Math.cos(@turnAngle)
-			
 
 		while i<@totalItems
 			p = @items[i]
@@ -142,6 +141,7 @@ class Main extends EventDispatcher
 				
 
 			# console.log rotX,m, @cx, p.position.y,m, @cy
+
 
 		@renderer.render(@stage);
 		requestAnimFrame(@update);

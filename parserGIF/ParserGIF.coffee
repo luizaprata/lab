@@ -1,11 +1,9 @@
-class Parser extends EventDispatcher
+class ParserGIF
 	constructor:()->
-
-		info = @getInfo(sourceArrayBuffer, false);
+		# info = @getInfo(sourceArrayBuffer, false);
 		
-    
 	getNewImage:() ->
-		return 
+		return {
 			identifier: '0'
 			localPalette: false
 			localPaletteSize: 0
@@ -18,31 +16,36 @@ class Parser extends EventDispatcher
 			height: 0
 			delay: 0
 			disposal: 0
+		}
 
-	getBitArray:(num) ->
+	getBitArray = (num) ->
 		bits = []
 		i = 7
-		while i-- >= 0
-			bits[i] = if !!(num & (1 << i)) then 1 else 0
+		while i >= 0
+			bits.push (if !!(num & (1 << i)) then 1 else 0)
+			i--
 		return bits
 
 	getDuration:(duration) ->
 		return ((duration / 100) * 1000)
 
-	bitToInt:(bitArray) ->
-		return bitArray.reduce( (s, n) -> 
+	getPaletteSize:(palette) ->
+		return (3 * Math.pow(2, 1 + bitToInt(palette.slice(5, 8))));
+
+	bitToInt = (bitArray) ->
+		return bitArray.reduce ((s, n) ->
 			return s * 2 + n
-		, 0
+		), 0
 
 	readSubBlock:(view, pos, read) ->
 		subBlock = {
-			data: '',
+			data: ''
 			size: 0
 		}
 
 		while (true)
 			size = view.getUint8(pos + subBlock.size, true)
-			if (size === 0)
+			if (size == 0)
 				subBlock.size++
 				break
 			if (read) 
@@ -57,7 +60,7 @@ class Parser extends EventDispatcher
 		unpackedField = null
 		subBlock = null
 
-		info =
+		info = {
 			valid: false
 			globalPalette: false
 			globalPaletteSize: 0
@@ -73,6 +76,7 @@ class Parser extends EventDispatcher
 			durationFirefox: 0
 			durationChrome: 0
 			durationOpera: 0
+		}
 		
 
 		view = new jDataView(sourceArrayBuffer)
@@ -96,12 +100,11 @@ class Parser extends EventDispatcher
 
 		# parse global palette
 		unpackedField = @getBitArray(view.getUint8(10, true))
-		if (unpackedField[0]) 
-			globalPaletteSize = getPaletteSize(unpackedField)
+		if (unpackedField[0])
+			globalPaletteSize = @getPaletteSize(unpackedField)
 			info.globalPalette = true
 			info.globalPaletteSize = (globalPaletteSize / 3)
 			pos += globalPaletteSize
-		}
 		pos += 13
 
 		image = @getNewImage()
@@ -113,10 +116,9 @@ class Parser extends EventDispatcher
 					when 0x21 #EXTENSION BLOCK
 						type = view.getUint8(pos + 1, true)
 
-						if (type === 0xF9)  #GRAPHICS CONTROL EXTENSION
+						if (type == 0xF9) #GRAPHICS CONTROL EXTENSION
 							length = view.getUint8(pos + 2)
-							if (length === 4) 
-
+							if (length == 4) 
 								delay = @getDuration(view.getUint16(pos + 4, true))
 
 								if (delay < 60 && !info.isBrowserDuration) 
@@ -138,11 +140,9 @@ class Parser extends EventDispatcher
 								image.disposal = parseInt(disposal, 2)
 
 								pos += 8
-							}
 							else 
 								pos++
 							
-						}
 						else 
 							pos += 2
 							subBlock = @readSubBlock(view, pos, true)
@@ -176,7 +176,7 @@ class Parser extends EventDispatcher
 						unpackedField = @getBitArray(view.getUint8(pos + 9, true))
 						if (unpackedField[0]) 
 							# local palette?
-							localPaletteSize = getPaletteSize(unpackedField)
+							localPaletteSize = @getPaletteSize(unpackedField)
 							image.localPalette = true
 							image.localPaletteSize = (localPaletteSize / 3)
 
@@ -201,24 +201,18 @@ class Parser extends EventDispatcher
 							# quickly bail if the gif has more than one image
 							if (quickPass) 
 								return info
-							
-						
-
 						pos += 11
 						subBlock = @readSubBlock(view, pos, false)
 						pos += subBlock.size
 						break
 					when 0x3B # TRAILER BLOCK (THE END)
 						return info
-						default: # UNKNOWN BLOCK (bad)
-						pos++
-						break
-				
-			
-			catch (e) 
+			catch
 				info.valid = false
 				return info
 			
 			# # this shouldn't happen, but if the trailer block is missing, we should bail at EOF
 			if ((pos) >= sourceArrayBuffer.byteLength)
 				return info
+
+

@@ -32,7 +32,7 @@ class DetailsPageController
 
 
 angular
-.module('artistControllers',[])
+.module('artistControllers',['ngAnimate'])
 .controller('ListController',['$scope', '$http', ArtistsListController]) # colocando os servicos dentro do array, consigo garantir que no minify nao fode
 .controller('DetailsController',['$scope', '$http', '$routeParams', DetailsPageController]) # colocando os servicos dentro do array, consigo garantir que no minify nao fode
 

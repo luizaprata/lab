@@ -36,7 +36,7 @@ DetailsPageController = (function() {
 
 })();
 
-angular.module('artistControllers', []).controller('ListController', ['$scope', '$http', ArtistsListController]).controller('DetailsController', ['$scope', '$http', '$routeParams', DetailsPageController]);
+angular.module('artistControllers', ['ngAnimate']).controller('ListController', ['$scope', '$http', ArtistsListController]).controller('DetailsController', ['$scope', '$http', '$routeParams', DetailsPageController]);
 
 Router = (function() {
   function Router($routeProvider) {

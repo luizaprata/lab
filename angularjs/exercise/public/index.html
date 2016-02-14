@@ -10,6 +10,8 @@
     <meta name="robots" content="noindex">
     <link rel="canonical" href="">
 
+    
+
     <style type="text/css">
         html, body { height: 100%; margin: 0; padding: 0; }
     </style>
@@ -19,6 +21,10 @@
     <input type="text" ng-model="name">
     <h2> Welcome {{ name }} !</h2>
 
+    <div ng-controller = "MyController">
+        <h1>{{author.name}}</h1>
+        <p>{{author.title +' - '+author.company}}</p>
+    </div>
 
     <script src="js/angular.1.2.8.min.js"></script>
     <script src="js/main.js"></script>

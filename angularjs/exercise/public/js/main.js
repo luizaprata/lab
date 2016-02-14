@@ -15,9 +15,20 @@ ArtistsListController = (function() {
 DetailsPageController = (function() {
   function DetailsPageController($scope, $http, $routeParams) {
     $http.get('json/data.json').success(function(data) {
+      var num, total;
       $scope.artists = data;
       $scope.idx = $routeParams.itemId;
-      return console.log($routeParams);
+      num = Number($routeParams.itemId);
+      total = $scope.artists.length;
+      $scope.prevItem = total - 1;
+      if (num > 0) {
+        $scope.prevItem = num - 1;
+      }
+      $scope.nextItem = 0;
+      if (num < total - 1) {
+        $scope.nextItem = num + 1;
+      }
+      return false;
     });
   }
 

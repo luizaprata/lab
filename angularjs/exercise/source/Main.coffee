@@ -15,8 +15,20 @@ class DetailsPageController
         $http.get('json/data.json').success((data)->
             $scope.artists = data;
             $scope.idx = $routeParams.itemId;
-            console.log $routeParams
+
+            num = Number($routeParams.itemId)
+            total = $scope.artists.length
+
+            $scope.prevItem = total-1
+            if num > 0
+                $scope.prevItem = num-1
+
+            $scope.nextItem = 0
+            if num < total-1
+                $scope.nextItem = num+1
+            false
         )
+
 
 
 angular

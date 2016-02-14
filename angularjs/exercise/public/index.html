@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" ng-app>
+<html lang="pt-br" ng-app="myApp">
 <head>
     <title>Angular UP and Running</title>
     <meta charset="UTF-8">
@@ -10,7 +10,7 @@
     <meta name="robots" content="noindex">
     <link rel="canonical" href="">
 
-    
+
 
     <style type="text/css">
         html, body { height: 100%; margin: 0; padding: 0; }
@@ -18,8 +18,6 @@
 </head>
 <body>
     <div id="wrapper"></div>
-    <input type="text" ng-model="name">
-    <h2> Welcome {{ name }} !</h2>
 
     <div ng-controller = "MyController">
         <h1>{{author.name}}</h1>

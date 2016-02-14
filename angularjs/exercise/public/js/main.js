@@ -11,4 +11,4 @@ ApplicationController = (function() {
 
 })();
 
-angular.module('myApp', []).controller('MyController', ApplicationController);
+angular.module('myApp', []).controller('MyController', ['$scope', '$http', ApplicationController]);

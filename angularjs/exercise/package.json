@@ -1,0 +1,13 @@
+{
+  "name": "gulpTasks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp-coffee": "^2.3.1",
+    "gulp": "^3.9.1"
+  },
+  "author": "Wunderman",
+  "license": "ISC"
+}

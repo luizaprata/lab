@@ -16,7 +16,8 @@ DetailsPageController = (function() {
   function DetailsPageController($scope, $http, $routeParams) {
     $http.get('json/data.json').success(function(data) {
       $scope.artists = data;
-      return $scope.artistOrder = 'name';
+      $scope.idx = $routeParams.itemId;
+      return console.log($routeParams);
     });
   }
 

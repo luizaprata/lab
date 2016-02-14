@@ -14,7 +14,8 @@ class DetailsPageController
     constructor:($scope, $http, $routeParams)->
         $http.get('json/data.json').success((data)->
             $scope.artists = data;
-            $scope.artistOrder = 'name';
+            $scope.idx = $routeParams.itemId;
+            console.log $routeParams
         )
 
 

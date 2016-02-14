@@ -3,7 +3,8 @@ var ApplicationController;
 ApplicationController = (function() {
   function ApplicationController($scope, $http) {
     $http.get('json/data.json').success(function(data) {
-      return $scope.artists = data;
+      $scope.artists = data;
+      return $scope.artistOrder = 'name';
     });
   }
 

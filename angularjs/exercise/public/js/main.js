@@ -1,4 +1,4 @@
-var ArtistsListController, Router;
+var ArtistsListController, DetailsPageController, Router;
 
 ArtistsListController = (function() {
   function ArtistsListController($scope, $http) {
@@ -12,13 +12,28 @@ ArtistsListController = (function() {
 
 })();
 
-angular.module('artistControllers', []).controller('ListController', ['$scope', '$http', ArtistsListController]);
+DetailsPageController = (function() {
+  function DetailsPageController($scope, $http, $routeParams) {
+    $http.get('json/data.json').success(function(data) {
+      $scope.artists = data;
+      return $scope.artistOrder = 'name';
+    });
+  }
+
+  return DetailsPageController;
+
+})();
+
+angular.module('artistControllers', []).controller('ListController', ['$scope', '$http', ArtistsListController]).controller('DetailsController', ['$scope', '$http', '$routeParams', DetailsPageController]);
 
 Router = (function() {
   function Router($routeProvider) {
     $routeProvider.when('/list', {
       templateUrl: 'partials/list.html',
       controller: 'ListController'
+    }).when('/details/:itemId', {
+      templateUrl: 'partials/details.html',
+      controller: 'DetailsController'
     }).otherwise({
       redirectTo: '/list'
     });

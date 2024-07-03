@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-07-03T15:09:31.808Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" etag="ZOf7Guj1QzlqOQ2y45zg" version="24.6.4" type="github">
+<mxfile host="app.diagrams.net" modified="2024-07-03T15:10:59.599Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" etag="ADr86Khb4526y4U-5egF" version="24.6.4" type="github">
   <diagram name="Página-1" id="5IM4jTXnU0rdfgFOPCTm">
     <mxGraphModel dx="1674" dy="774" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -13,7 +13,7 @@
         <mxCell id="YRVmmR6wgMEOWOelV76Z-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YRVmmR6wgMEOWOelV76Z-3" target="YRVmmR6wgMEOWOelV76Z-5">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="YRVmmR6wgMEOWOelV76Z-3" value="Nova Planilha&lt;br&gt;&lt;div&gt;NOVO AGENDAMENTO (2)&lt;/div&gt;&lt;div&gt;COM OVERLAP DE DATAS&lt;br&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.delay;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-3" value="Nova Planilha&lt;br&gt;&lt;div&gt;NOVO AGENDAMENTO (2)&lt;/div&gt;&lt;div&gt;COM OVERLAP com (1)&lt;br&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.delay;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="390" y="60" width="210" height="100" as="geometry" />
         </mxCell>
         <mxCell id="YRVmmR6wgMEOWOelV76Z-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YRVmmR6wgMEOWOelV76Z-5" target="YRVmmR6wgMEOWOelV76Z-28">
@@ -49,7 +49,7 @@
         <mxCell id="YRVmmR6wgMEOWOelV76Z-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YRVmmR6wgMEOWOelV76Z-15" target="YRVmmR6wgMEOWOelV76Z-16">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="YRVmmR6wgMEOWOelV76Z-15" value="Nova Planilha&lt;br&gt;NOVO AGENDAMENTO (3)&lt;br&gt;COM OVERLAP COM VIGENCIA EM VIGOR (2)" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.delay;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-15" value="Nova Planilha&lt;br&gt;NOVO AGENDAMENTO (3)&lt;br&gt;COM OVERLAP COM (2)" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.delay;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="390" y="330" width="210" height="100" as="geometry" />
         </mxCell>
         <mxCell id="YRVmmR6wgMEOWOelV76Z-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YRVmmR6wgMEOWOelV76Z-16" target="YRVmmR6wgMEOWOelV76Z-32">

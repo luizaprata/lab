@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-07-03T14:58:03.166Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" etag="tplT7poBT8UBTedIwvbD" version="24.6.4" type="github">
+<mxfile host="app.diagrams.net" modified="2024-07-03T15:04:37.974Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" etag="Y_tm3oQvD5thdQF2M7j1" version="24.6.4" type="github">
   <diagram name="Página-1" id="5IM4jTXnU0rdfgFOPCTm">
     <mxGraphModel dx="1674" dy="774" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -16,7 +16,10 @@
         <mxCell id="YRVmmR6wgMEOWOelV76Z-3" value="Nova Planilha&lt;br&gt;NOVO AGENDAMENTO (2)" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.delay;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="390" y="60" width="210" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="YRVmmR6wgMEOWOelV76Z-5" value="&lt;div&gt;CANCELA O AGENDAMENTO (1)&amp;nbsp;&lt;/div&gt;&lt;div&gt;INCLUI O AGENDAMENTO (2) &lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;" vertex="1" parent="1">
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YRVmmR6wgMEOWOelV76Z-5" target="YRVmmR6wgMEOWOelV76Z-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-5" value="&lt;div&gt;FINALIZA O AGENDAMENTO (1)&amp;nbsp;&lt;/div&gt;&lt;div&gt;INCLUI O AGENDAMENTO (2) &lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="680" y="60" width="280" height="100" as="geometry" />
         </mxCell>
         <mxCell id="YRVmmR6wgMEOWOelV76Z-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YRVmmR6wgMEOWOelV76Z-8" target="YRVmmR6wgMEOWOelV76Z-10">
@@ -31,7 +34,10 @@
         <mxCell id="YRVmmR6wgMEOWOelV76Z-10" value="Nova Planilha&lt;br&gt;SKU active=false" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.delay;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="390" y="190" width="210" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="YRVmmR6wgMEOWOelV76Z-11" value="CANCELA VIGÊNCIA (1)&amp;nbsp; e (2) &lt;br&gt;CANCELA SKU" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;" vertex="1" parent="1">
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YRVmmR6wgMEOWOelV76Z-11" target="YRVmmR6wgMEOWOelV76Z-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-11" value="FINALIZA VIGÊNCIA (1)&amp;nbsp; e (2) &lt;br&gt;CANCELA SKU" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="680" y="190" width="280" height="100" as="geometry" />
         </mxCell>
         <mxCell id="YRVmmR6wgMEOWOelV76Z-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YRVmmR6wgMEOWOelV76Z-13" target="YRVmmR6wgMEOWOelV76Z-15">
@@ -46,11 +52,14 @@
         <mxCell id="YRVmmR6wgMEOWOelV76Z-15" value="Nova Planilha&lt;br&gt;NOVO AGENDAMENTO (3)&lt;br&gt;COM OVERLAP COM VIGENCIA EM VIGOR (2)" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.delay;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="390" y="330" width="210" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="YRVmmR6wgMEOWOelV76Z-16" value="CANCELA VIGÊNCIA EM VIGOR (2)&lt;br&gt;&lt;div&gt;INCLUI O AGENDAMENTO (3) &lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;" vertex="1" parent="1">
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YRVmmR6wgMEOWOelV76Z-16" target="YRVmmR6wgMEOWOelV76Z-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-16" value="FINALIZA VIGÊNCIA EM VIGOR (2)&lt;br&gt;&lt;div&gt;INCLUI O AGENDAMENTO (3) &lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="680" y="335" width="280" height="90" as="geometry" />
         </mxCell>
         <mxCell id="YRVmmR6wgMEOWOelV76Z-17" value="OBS&lt;br&gt;&lt;div&gt;CANCELA VIGÊNCIA: O CANCELAMENTO DA VIGENCIA DEVE SER FEITO PELO DESACTIVE_DATE&lt;/div&gt;&lt;div&gt;CANCELA SKU: CANCELAMENTO DO SKU PELO ACTIVE=FALSE&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="117" y="810" width="710" height="60" as="geometry" />
+          <mxGeometry x="110" y="870" width="710" height="60" as="geometry" />
         </mxCell>
         <mxCell id="YRVmmR6wgMEOWOelV76Z-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YRVmmR6wgMEOWOelV76Z-19" target="YRVmmR6wgMEOWOelV76Z-21">
           <mxGeometry relative="1" as="geometry" />
@@ -64,23 +73,38 @@
         <mxCell id="YRVmmR6wgMEOWOelV76Z-21" value="Nova Planilha&lt;br&gt;NOVO AGENDAMENTO (3)&lt;br&gt;NAO EXISTE OVERLAP DE DATAS" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.delay;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="380" y="470" width="210" height="100" as="geometry" />
         </mxCell>
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YRVmmR6wgMEOWOelV76Z-22" target="YRVmmR6wgMEOWOelV76Z-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="YRVmmR6wgMEOWOelV76Z-22" value="&lt;div&gt;INICIA O AGENDAMENTO (3) &lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="670" y="475" width="280" height="90" as="geometry" />
         </mxCell>
         <mxCell id="YRVmmR6wgMEOWOelV76Z-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YRVmmR6wgMEOWOelV76Z-24" target="YRVmmR6wgMEOWOelV76Z-26">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="YRVmmR6wgMEOWOelV76Z-24" value="&lt;div&gt;&lt;br&gt;VIGÊNCIA EM VIGOR (2)&lt;br&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.delay;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-24" value="&lt;div&gt;VIGÊNCIA EM VIGOR (1)&lt;br&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.delay;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="110" y="610" width="190" height="100" as="geometry" />
         </mxCell>
         <mxCell id="YRVmmR6wgMEOWOelV76Z-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YRVmmR6wgMEOWOelV76Z-26" target="YRVmmR6wgMEOWOelV76Z-27">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="YRVmmR6wgMEOWOelV76Z-26" value="Nova Planilha&lt;br&gt;NOVO AGENDAMENTO (3)&lt;br&gt;NAO EXISTE OVERLAP DE DATAS" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.delay;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-26" value="TEMPO PASSOU ACABOU A VIGÊNCIA EM VIGOR (1)" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.delay;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="380" y="610" width="210" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="YRVmmR6wgMEOWOelV76Z-27" value="&lt;div&gt;INICIA O AGENDAMENTO (3) &lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;" vertex="1" parent="1">
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-27" value="&lt;div&gt;ROTINA DIÁRIA PARA CANCELAR O &lt;br&gt;SKU SEM VIGÊNCIA&lt;br&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="670" y="615" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-28" value="VIGÊNCIA AGENDADA (2)" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="60" width="250" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-30" value="x" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="190" width="250" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-32" value="VIGÊNCIA AGENDADA (1)&lt;br&gt;VIGÊNCIA AGENDADA (3)" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="330" width="250" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-34" value="&lt;div&gt;VIGÊNCIA AGENDADA (1)&lt;br&gt;VIGÊNCIA EM VIGOR (2)&lt;br&gt;VIGÊNCIA AGENDADA (3)&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="470" width="250" height="100" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

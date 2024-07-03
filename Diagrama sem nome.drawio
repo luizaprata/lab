@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-07-03T15:05:12.767Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" etag="EJSegCfcq5f99F6N6TAl" version="24.6.4" type="github">
+<mxfile host="app.diagrams.net" modified="2024-07-03T15:06:46.070Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" etag="zdJF8dy3wcLdhet36eB1" version="24.6.4" type="github">
   <diagram name="Página-1" id="5IM4jTXnU0rdfgFOPCTm">
     <mxGraphModel dx="1674" dy="774" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -91,7 +91,10 @@
         <mxCell id="YRVmmR6wgMEOWOelV76Z-26" value="TEMPO PASSOU ACABOU A VIGÊNCIA EM VIGOR (1)" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.delay;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="380" y="610" width="210" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="YRVmmR6wgMEOWOelV76Z-27" value="&lt;div&gt;ROTINA DIÁRIA PARA CANCELAR O &lt;br&gt;SKU SEM VIGÊNCIA&lt;br&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;" vertex="1" parent="1">
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YRVmmR6wgMEOWOelV76Z-27" target="YRVmmR6wgMEOWOelV76Z-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-27" value="&lt;div&gt;ROTINA DIÁRIA PARA&amp;nbsp;&lt;/div&gt;&lt;div&gt;CANCELAR O SKU SEM&amp;nbsp;&lt;/div&gt;&lt;div&gt;VIGÊNCIA EM VIGOR OU AGENDADA&lt;br&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="670" y="615" width="280" height="90" as="geometry" />
         </mxCell>
         <mxCell id="YRVmmR6wgMEOWOelV76Z-28" value="VIGÊNCIA AGENDADA (2)" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
@@ -105,6 +108,9 @@
         </mxCell>
         <mxCell id="YRVmmR6wgMEOWOelV76Z-34" value="&lt;div&gt;VIGÊNCIA AGENDADA (1)&lt;br&gt;VIGÊNCIA EM VIGOR (2)&lt;br&gt;VIGÊNCIA AGENDADA (3)&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="1030" y="470" width="250" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-36" value="x" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="610" width="250" height="100" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

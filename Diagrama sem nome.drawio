@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-07-03T15:04:37.974Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" etag="Y_tm3oQvD5thdQF2M7j1" version="24.6.4" type="github">
+<mxfile host="app.diagrams.net" modified="2024-07-03T15:05:02.782Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" etag="v4A0nMQ20_xXiC_FvnlX" version="24.6.4" type="github">
   <diagram name="Página-1" id="5IM4jTXnU0rdfgFOPCTm">
     <mxGraphModel dx="1674" dy="774" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -58,7 +58,7 @@
         <mxCell id="YRVmmR6wgMEOWOelV76Z-16" value="FINALIZA VIGÊNCIA EM VIGOR (2)&lt;br&gt;&lt;div&gt;INCLUI O AGENDAMENTO (3) &lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="680" y="335" width="280" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="YRVmmR6wgMEOWOelV76Z-17" value="OBS&lt;br&gt;&lt;div&gt;CANCELA VIGÊNCIA: O CANCELAMENTO DA VIGENCIA DEVE SER FEITO PELO DESACTIVE_DATE&lt;/div&gt;&lt;div&gt;CANCELA SKU: CANCELAMENTO DO SKU PELO ACTIVE=FALSE&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-17" value="OBS&lt;br&gt;&lt;div&gt;FINALIZA VIGÊNCIA: A FINALIZAÇÃO DA VIGÊNCIA DEVE SER FEITO PELO DESACTIVE_DATE&lt;/div&gt;&lt;div&gt;CANCELA SKU: CANCELAMENTO DO SKU PELO ACTIVE=FALSE&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="110" y="870" width="710" height="60" as="geometry" />
         </mxCell>
         <mxCell id="YRVmmR6wgMEOWOelV76Z-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YRVmmR6wgMEOWOelV76Z-19" target="YRVmmR6wgMEOWOelV76Z-21">

@@ -1,9 +1,24 @@
-<mxfile host="app.diagrams.net" modified="2024-07-03T14:07:54.445Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" version="24.6.4" etag="a2xzCekWMi4IC6rTDHKe" type="github">
+<mxfile host="app.diagrams.net" modified="2024-07-03T14:37:21.347Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" etag="RlLMGYOxpB6PwW_Jx7q2" version="24.6.4" type="github">
   <diagram name="Página-1" id="5IM4jTXnU0rdfgFOPCTm">
-    <mxGraphModel>
+    <mxGraphModel dx="1674" dy="774" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YRVmmR6wgMEOWOelV76Z-1" target="YRVmmR6wgMEOWOelV76Z-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-1" value="&lt;div&gt;VIGENCIA AGENDADA (1)&lt;br&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.delay;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="120" y="70" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="YRVmmR6wgMEOWOelV76Z-3" target="YRVmmR6wgMEOWOelV76Z-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-3" value="Nova Planilha&lt;br&gt;NOVO AGENDAMENTO (2)" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.delay;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="390" y="70" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="YRVmmR6wgMEOWOelV76Z-5" value="CANCELA O AGENDAMENTO (1) e inicia o AGENDAMENTO (2) &lt;br&gt;cancelamento pelo campo desactive_date" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="660" y="70" width="280" height="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
